@@ -80,7 +80,7 @@
 \usepackage{algorithm}      % 提供 algorithm 环境，给算法加编号、标题
 \usepackage{algpseudocode}  % 提供 algorithmic 环境，支持伪代码的标准语法（If/For/While/Return 等），美赛中展示算法逻辑必备。
 % 定义伪代码自定义关键词（解决 \Initialize 未定义）
-\algnewcommand{\Initialize}{\State \textbf{Initialize:} } % 初始化关键词
+\algnewcommand{\Initialize}{\State\textbf{Initialize:} } % 初始化关键词
 \algnewcommand{\ArgMin}{\arg\min} % 统一 argmin 写法（可选）
 
 
@@ -297,10 +297,7 @@
     \fancyfoot[C]{\thepage}
 }
 % ============================================
-
 \begin{document}
-
-
 % ===================================
 % % 紧凑的图表标题格式
 % \captionsetup{font=footnotesize, labelfont=bf, skip=0.3em}
@@ -393,7 +390,7 @@
 
 \small
 \noindent\textbf{Problem.}
-Using only the provided elevator operational logs, design a practical control policy to:
+Using the provided elevator operational logs, design a practical control policy to:
 (i) forecast short-horizon demand, (ii) identify the current traffic regime, and
 (iii) proactively park \emph{idle} elevators to reduce passenger waiting and long-wait events.
 
@@ -403,7 +400,7 @@ We implement a deployable supervisory layer that acts only on idle cars:
 \begin{itemize}[leftmargin=1.2em,itemsep=0.25em,topsep=0.25em]
   \item \textbf{Task 1 (Forecasting):}
   Aggregate hall calls into 5-minute slices and predict next-slice demand with a gradient-boosted decision tree (Route A).
-  As a transparent benchmark (Route B), we use a time-of-day baseline with regime AR(1) correction.
+  As a transparent benchmark (Route B), we use a time-of-day baseline with regime $AR(1)$ correction.
   \item \textbf{Task 2 (Traffic regime):}
   Discover operational modes from 5-minute feature vectors (intensity, directionality, dispersion, inter-floor tendency, and service pressure)
   using KMeans~\cite{macqueen1967kmeans}, then map clusters to manager-friendly labels (e.g., \emph{Up-Peak}, \emph{Down-Peak}, \emph{Idle/Low}).
@@ -416,7 +413,7 @@ We implement a deployable supervisory layer that acts only on idle cars:
 
 \vspace{0.55em}
 \noindent\textbf{Key quantitative highlight (Task 1 benchmark).}
-On the held-out test set, the Route B baseline+AR(1) improves one-step 5-minute demand prediction over the pure time-of-day baseline
+On the held-out test set, the Route B baseline+$AR(1)$ improves one-step 5-minute demand prediction over the pure time-of-day baseline
 (MAE $4.675$ vs.\ $4.781$, RMSE $8.325$ vs.\ $8.528$; about $2.2\%$ and $2.4\%$ relative reductions, respectively).
 
 \vspace{0.55em}
@@ -460,8 +457,8 @@ Field deployment should validate under seasonal and event-driven shifts and moni
 % =============================目录页=============================
 {
     \renewcommand{\baselinestretch}{0.4} % 临时缩小行距（0.85~0.95 可调）
-    \setlength{\parskip}{-1pt}             % 消除段落间距
-    \setlength{\itemsep}{-5pt}            % 减小条目间距（关键！）
+    \setlength{\parskip}{-2pt}             % 消除段落间距
+    \setlength{\itemsep}{-6pt}            % 减小条目间距（关键！）
     \tableofcontents
 }
 \clearpage
@@ -499,8 +496,8 @@ Our main contributions are:
 \end{itemize}
 
 The remainder of the paper is organized as follows. Section~\ref{sec:problem} formalizes the tasks and assumptions.
-Section~\ref{sec:data} describes data processing and feature construction. Section~\ref{sec:modeling} presents the forecasting--mode
-identification--parking pipeline. Section~\ref{sec:results} reports performance and robustness analyses, and Section~\ref{sec:memo}
+Section~\ref{sec:data} describes data processing and feature construction. Section~\ref{sec:modeling} presents the forecasting-mode
+identification-parking pipeline. Section~\ref{sec:results} reports performance and robustness analyses, and Section~\ref{sec:memo}
 summarizes deployment guidance in a management memo.
 
 
@@ -540,7 +537,7 @@ and compatible with supervisory deployment:
   \item \textbf{Idle-only repositioning.} Reposition commands apply only to idle cars, preventing service disruption.
   \item \textbf{Distance-proxy service model.} Waiting time is monotonically related to response distance between a call floor and the nearest available car.
         We therefore optimize and evaluate parking using distance-based proxies consistent with the available logs.
-  \item \textbf{Cost awareness.} Repositioning may increase empty travel; we track an explicit empty-travel metric to expose the service--cost tradeoff.
+  \item \textbf{Cost awareness.} Repositioning may increase empty travel; we track an explicit empty-travel metric to expose the service-cost tradeoff.
   \item \textbf{Comparability of evaluation.} Simulation parameters (travel/door time) affect absolute seconds, so we interpret results primarily through
         \emph{relative} comparisons across strategies under the same parameter setting and call stream.
 \end{itemize}
@@ -583,8 +580,7 @@ The cleaning process follows several domain-specific principles:
 \end{itemize}
 These principles ensure that the cleaned data exhibit integrity, accuracy, domain consistency, validity, and operability, thereby providing directly support the problem's emphasis on adaptive models, as clean data reduces noise in predictions and optimizations.
 
-\subsubsection{Data Cleaning Operations}
-\label{subsubsec:cleaning_operations}
+\subsubsection{Data Cleaning Operations}\label{subsubsec:cleaning_operations}
 As detailed in \textbf{Cleaning Principles}, all datasets were cleaned under four core principles. Table~\ref{tab:data-cleaning} summarizes retention rates and usage scope. Each dataset was processed according to its role in our modeling pipeline, with cleaning operations explicitly justified by domain constraints and task requirements:
 \begin{itemize}
     \item Facing \textbf{missing or unparseable floor values} (e.g., \texttt{NaN} or strings like ``4,5'') in \texttt{hall\_calls.csv}, we removed records with no valid origin floor and split composite floor requests into individual calls; this ensures that every retained hall call can be unambiguously mapped to a physical floor, which is essential for constructing spatially resolved demand forecasts—the foundation of our short-term prediction and parking strategy.
@@ -599,8 +595,7 @@ As detailed in \textbf{Cleaning Principles}, all datasets were cleaned under fou
 \end{itemize}
 This section details the data cleaning process for the elevator datasets, ensuring high-quality input for mathematical modeling in traffic prediction, operational mode classification, and dynamic parking strategies. Cleaning was performed using Python with Pandas, focusing on integrity, standardization, and domain-specific validations. Operations prioritize retaining representative data while removing invalid entries without bias. 
 
-\subsubsection{Data Cleaning outcomes and Validation}
-\label{subsubsec:cleaning_validation}
+\subsubsection{Data Cleaning outcomes and Validation}\label{subsubsec:cleaning_validation}
 Cleaned files can be found in the \textbf{Appendix}.
 \begin{table}[htbp]
     \centering
@@ -635,8 +630,7 @@ Cleaned files can be found in the \textbf{Appendix}.
             & 218,491 (100\%) \\
         \hline
     \end{tabular}
-    \caption{Summary of data cleaning operations, rationale, and retention rates.}
-    \label{tab:data-cleaning}
+    \caption{Summary of data cleaning operations, rationale, and retention rates.}\label{tab:data-cleaning}
 \end{table}
 
 We validate our cleaning process along three criteria inspired by Xiong et al.~\cite{1583581}: (i) adherence to physical and operational constraints, (ii) preservation of task-relevant signals—particularly congestion and peak behavior—and (iii) retention of representative temporal patterns across weekdays, weekends, and traffic regimes. These criteria are especially critical in elevator modeling, where spatial accuracy, load realism, and timing fidelity directly affect prediction and control performance.
@@ -655,60 +649,50 @@ We conducted a comprehensive exploratory data analysis (EDA) to uncover temporal
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\linewidth]{figures/response_time_distribution.pdf}
-        \caption{Response time distribution}
-        \label{fig:resp_dist}
+        \caption{Response time distribution}\label{fig:resp_dist}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\linewidth]{figures/hourly_calls.pdf}
-        \caption{Hourly hall call volume}
-        \label{fig:hourly_calls}
+        \caption{Hourly hall call volume}\label{fig:hourly_calls}
     \end{subfigure}
-    \caption{System responsiveness and overall temporal demand pattern.}
-    \label{fig:temporal_overview}
+    \caption{System responsiveness and overall temporal demand pattern.}\label{fig:temporal_overview}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\linewidth]{figures/hourly_up_down.pdf}
-        \caption{Up vs. down calls by hour}
-        \label{fig:up_down}
+        \caption{Up vs. down calls by hour}\label{fig:up_down}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\linewidth]{figures/elevator_usage_by_hour.pdf}
-        \caption{Average passenger weight entering per hour}
-        \label{fig:usage_weight}
+        \caption{Average passenger weight entering per hour}\label{fig:usage_weight}
     \end{subfigure}
-    \caption{Directional traffic modes and load intensity validation.}
-    \label{fig:directional_load}
+    \caption{Directional traffic modes and load intensity validation.}\label{fig:directional_load}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/hourly_calls_weekday_vs_weekend.pdf}
-    \caption{Weekday versus weekend call volume, showing structured office traffic on weekdays.}
-    \label{fig:weekday_weekend}
+    \caption{Weekday versus weekend call volume, showing structured office traffic on weekdays.}\label{fig:weekday_weekend}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\linewidth]{figures/hall_calls_heatmap_weekday.pdf}
-        \caption{Weekday spatial-temporal heatmap}
-        \label{fig:heatmap_weekday}
+        \caption{Weekday spatial-temporal heatmap}\label{fig:heatmap_weekday}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \includegraphics[width=\linewidth]{figures/hall_calls_heatmap_weekend.pdf}
-        \caption{Weekend spatial-temporal heatmap}
-        \label{fig:heatmap_weekend}
+        \caption{Weekend spatial-temporal heatmap}\label{fig:heatmap_weekend}
     \end{subfigure}
-    \caption{Spatial distribution of hall calls across floors and hours.}
-    \label{fig:spatial_heatmaps}
+    \caption{Spatial distribution of hall calls across floors and hours.}\label{fig:spatial_heatmaps}
 \end{figure}
-The heatmaps (Figures~\ref{fig:heatmap_weekday} and \ref{fig:heatmap_weekend}) expose spatial heterogeneity. On weekdays, intense activity concentrates between Floors 1--3 (main lobby and exits) and Floors 10--14 (likely office zones), especially during 8--10 AM and 5--7 PM. In contrast, weekends show diffuse, low-intensity usage across all floors, confirming minimal structured traffic.
+The heatmaps (Figures~\ref{fig:heatmap_weekday} and~\ref{fig:heatmap_weekend}) expose spatial heterogeneity. On weekdays, intense activity concentrates between Floors 1--3 (main lobby and exits) and Floors 10--14 (likely office zones), especially during 8--10 AM and 5--7 PM.. In contrast, weekends show diffuse, low-intensity usage across all floors, confirming minimal structured traffic.
 
 
 
@@ -735,9 +719,9 @@ Thus, regime identification (Task~2) must incorporate directionality rather than
 Average incoming passenger weight (Figure~\ref{fig:usage_weight}) rises during the same periods as call-volume peaks, validating that peaks reflect
 genuine congestion rather than spurious button presses.
 
-\textbf{(F3 \& 4) Weekday--weekend differences and floor heterogeneity are substantial.}
+\textbf{(F3 \& 4) Weekday-weekend differences and floor heterogeneity are substantial.}
 Weekday demand is structured and significantly higher than weekend demand (Figure~\ref{fig:weekday_weekend}).
-Spatial--temporal heatmaps (Figure~\ref{fig:spatial_heatmaps}) show that weekday calls concentrate at lower lobby floors (1--3) and mid-to-upper
+Spatial-temporal heatmaps (Figure~\ref{fig:spatial_heatmaps}) show that weekday calls concentrate at lower lobby floors (1--3) and mid-to-upper
 office floors (approximately 10--14) during peaks, while weekend usage is sparse and diffuse.
 These patterns require floor-aware strategies in both prediction and parking.
 
@@ -778,7 +762,6 @@ Collectively, these findings motivate time-adaptive forecasting, real-time mode 
 
 % =-==================================通义版本======================================
 \section{Modeling}\label{sec:modeling}
-\label{sec:modeling}
 
 We propose a deployable, data-driven elevator control pipeline that links forecasting, traffic-mode recognition, and proactive parking. The key design principle is to keep each module both operationally interpretable and computationally light enough for real-time use in legacy group control systems.
 
@@ -786,7 +769,7 @@ We propose a deployable, data-driven elevator control pipeline that links foreca
 \subsection{Overview and Modeling Philosophy}
 
 The problem requires a proactive elevator control policy that can (i) forecast near-term demand, (ii) recognize the current traffic regime, and (iii) reposition idle elevators to reduce passenger waiting. To satisfy these requirements with a transparent and deployable pipeline, we build a three-stage framework:
-\begin{enumerate}[label=(\roman*)]
+\begin{enumerate}[label = (\roman*)]
     \item \textbf{Task 1: Short-term demand forecasting} to predict the number of hall calls in the next 5-minute slice;
     \item \textbf{Task 2: Traffic-mode discovery and online classification} to identify the current building usage regime (e.g., up-peak, down-peak, inter-floor);
     \item \textbf{Task 3: Mode-aware dynamic parking} to choose parking floors for idle elevators by solving a weighted 1D $k$-median problem using the mode-conditioned floor-demand distribution.
@@ -807,7 +790,7 @@ where $x_t$ is a feature vector constructed from historical demand and temporal 
 
 \subsubsection{Feature Engineering}
 To capture both periodic regularity and short-term dependence, we design $x_t$ with four groups of real-time features:
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[label = (\alph*)]
     \item \textbf{Cyclical time features:} daily and weekly periodicity are encoded using sine/cosine transforms (e.g.,
     $\sin(2\pi \cdot \text{minute\_of\_day}/1440)$ and $\cos(2\pi \cdot \text{minute\_of\_day}/1440)$), and similarly for the minute-of-week.
     \item \textbf{Calendar indicators:} hour, minute, and a weekend flag.
@@ -820,8 +803,8 @@ All features are constructed without future information, ensuring the model can 
 We adopt a gradient-boosted decision tree regressor (GBDT) due to its ability to model nonlinear interactions among mixed feature types, while remaining robust to noise and irregular demand spikes\cite{gbdt_chen,friedman2001gbm}. The dataset is split \emph{chronologically} to avoid temporal leakage: the first portion is used for training and the remaining portion for testing. We report mean absolute error (MAE) and root mean squared error (RMSE) for interpretability and sensitivity to extreme deviations.
 
 \noindent\textbf{Benchmark (Route B).}
-To provide a transparent and deployable baseline, we implement a time-of-day baseline and a regime AR(1) correction.
-Table~\ref{tab:task1-benchmark-routeb} reports that the AR(1)-corrected predictor improves one-step 5-minute demand forecasting
+To provide a transparent and deployable baseline, we implement a time-of-day baseline and a regime $AR(1)$ correction.
+Table~\ref{tab:task1-benchmark-routeb} reports that the $AR(1)$-corrected predictor improves one-step 5-minute demand forecasting
 over the pure time-of-day baseline in both MAE and RMSE.
 
 \input{project/outputs/latex_table_task1.tex}
@@ -829,8 +812,7 @@ over the pure time-of-day baseline in both MAE and RMSE.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.75\linewidth]{project/outputs/fig/task1_pred_vs_true.pdf}
-    \caption{Observed vs.\ predicted 5-minute demand for a representative window.}
-    \label{fig:task1-pred}
+    \caption{Observed vs.\ predicted 5-minute demand for a representative window.}\label{fig:task1-pred}
 \end{figure}
 
 \input{project/outputs/tab/task1_metrics.tex}
@@ -857,7 +839,7 @@ Since no ground-truth labels for ``traffic modes'' are provided, we use KMeans c
 \begin{equation}
 \min_{\{\mu_k\}} \sum_{t} \|x_t - \mu_{c(t)}\|^2,
 \end{equation}
-where $c(t)$ assigns slice $t$ to its nearest centroid. We choose a small number of clusters (e.g., $K=6$) to balance granularity and interpretability; cluster quality can be sanity-checked with a silhouette score and validated via downstream performance stability \cite{rousseeuw1987silhouette}. In our implementation, we set $K=6$ to capture common micro-regimes while maintaining interpretability; the resulting silhouette score (approximately 0.34) indicates moderate separation, which is expected because traffic regimes overlap in practice.
+where $c(t)$ assigns slice $t$ to its nearest centroid. We choose a small number of clusters (e.g., $K=6$) to balance granularity and interpretability; cluster quality can be sanity-checked with a silhouette score and validated via downstream performance stability~\cite{rousseeuw1987silhouette}. In our implementation, we set $K=6$ to capture common micro-regimes while maintaining interpretability; the resulting silhouette score (approximately 0.34) indicates moderate separation, which is expected because traffic regimes overlap in practice.
 
 \subsubsection{Cluster-to-Mode Naming}
 To satisfy MCM's requirement of explainable managerial recommendations, we convert numerical clusters into operational mode labels by inspecting each cluster's feature profile (mean intensity, up/down ratio, entropy, and inter-floor ratio). For example, a high-intensity cluster with dominant up direction is labeled as \emph{Up-Peak}, while a low-intensity cluster is labeled as \emph{Idle/Low}. This hybrid approach is data-driven in discovery yet transparent in interpretation. The mode timeline is aligned with the typical up-peak and down-peak periods.
@@ -867,8 +849,7 @@ To satisfy MCM's requirement of explainable managerial recommendations, we conve
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.75\linewidth]{project/outputs/fig/task2_mode_heatmap.pdf}
-    \caption{Mode frequency by hour-of-day, highlighting daily regime shifts.}
-    \label{fig:task2-heatmap}
+    \caption{Mode frequency by hour-of-day, highlighting daily regime shifts.}\label{fig:task2-heatmap}
 \end{figure}
 
 \subsubsection{Online Mode Classification}
@@ -922,9 +903,9 @@ pipeline that mirrors Tasks 1--3 with minimal training and explicit logic. This 
 sanity-check baseline for ablation and robustness discussions, and (ii) a deployment \emph{fail-safe} fallback when learned models
 become uncertain (e.g., missing data or out-of-distribution periods). 
 
-\subsubsection{Task 1: time-of-day baseline + regime AR(1).}\label{subsubsec:routebtask1}
+\subsubsection{Task 1: time-of-day baseline + regime $AR(1)$.}\label{subsubsec:routebtask1}
 Let $y_t$ denote hall-call volume in slice $t$ and let $\tau(t)$ denote the time-of-day index. We estimate a baseline profile
-$\mu(\tau)$ from historical averages. Residual dynamics are modeled by a regime-specific AR(1) on $e_t = y_t-\mu(\tau(t))$:
+$\mu(\tau)$ from historical averages. Residual dynamics are modeled by a regime-specific $AR(1)$ on $e_t = y_t-\mu(\tau(t))$:
 \[
 \hat y_{t+1}=\mu(\tau(t+1)) + \phi_{r(t)}\,\bigl(y_t-\mu(\tau(t))\bigr),
 \]
@@ -936,7 +917,7 @@ interpretable, and provides a conservative early-warning signal. State-wise erro
 We implement a rule-based classifier that assigns each 5-minute interval to one of six operational states:
 \{\textit{Night Idle, Morning Up-Peak, Lunch Down-Peak, Afternoon Mixed, Evening Down-Peak, Weekend Low-Demand}\}.
 The classifier uses simple interval features derived from hall-call logs,
-so we compute a compact set of online features per slice, including total calls $C_t$, directional imbalance $r_t$, $$r_t=(C^{\uparrow}_t-C^{\downarrow}_t)/(C_t+\epsilon)$$
+so we compute a compact set of online features per slice, including total calls $C_t$, directional imbalance $r_t$, \[r_t=(C^{\uparrow}_t-C^{\downarrow}_t)/(C_t+\epsilon)\]
 lobby dominance $p_{1,t}$ (share of calls originating at the lobby), and a dispersion proxy $H_t$ (entropy-like spread over floors).
 Traffic states $s_t$ are then assigned by transparent threshold rules (e.g., \emph{Up-Peak} if $C_t$ is high and $r_t$ is strongly positive).Thresholds $\theta_1,\theta_2,\theta_3$ are estimated from historical quantiles. 
 Because 5-minute call counts can be zero-inflated, we note that $\theta_1$ may degenerate to 0; to preserve the semantic meaning of ``idle'', we recommend enforcing a small positive floor (e.g., $\theta_1 \ge 1$) and using an inclusive low-activity check when needed.
@@ -962,8 +943,7 @@ Table~\ref{tab:task3-strategy} reports overall performance across all calls.
 To highlight operationally critical conditions, we further analyze peak hours,
 regime-transition windows, and high-load periods (Tips: windowed performance of the interpretable Route B parking baselines and table~\ref{tab:task3-strategy} is summarized in \ref{app:routeb}).
 
-\subsubsection{Deployment Fallback: When to Switch from Route A to Route B}
-\label{subsubsec:switching}
+\subsubsection{Deployment Fallback: When to Switch from Route A to Route B}\label{subsubsec:switching}
 
 To improve deployment safety, we treat Route~B as a \emph{rollback controller} and introduce a simple switching rule that detects
 low-confidence operating conditions for Route~A. At each 5-minute epoch, we compute a lightweight health check based on readily available
@@ -993,7 +973,7 @@ We report (i) average waiting time (AWT), defined as the elapsed time from a hal
 building's true kinematics are known.
 To capture both typical service quality and tail risk, we report the average waiting time (AWT), the 95th-percentile waiting time (P95), and the long-wait rate for each parking policy.
 
-Table~\ref{tab:task3-strategy} reports the primary (Route A) simulation comparison of parking strategies under a fixed parameter setting.
+Table~\ref{tab:task3-strategy1} reports the primary (Route A) simulation comparison of parking strategies under a fixed parameter setting.
 \input{project/outputs/tab/task3_strategy_comparison.tex}
 We further report robustness under stress scenarios in Appendix~\ref{app:extra}.
 
@@ -1175,7 +1155,7 @@ This appendix documents the cleaned datasets used by our pipeline. Our preproces
 \centering
 \caption{Cleaned datasets and key fields used by our pipeline. (All files are saved under \texttt{data\_cleaning/} in UTF-8.)}
 \label{tab:data-dict}
-\begin{tabular}{lll}
+\begin{tabular}{{p{4.8cm}p{4.3cm}p{7cm}}}
 \toprule
 File & Key fields & Notes \\
 \midrule
@@ -1290,9 +1270,9 @@ We keep all figures and tables as generated artifacts to ensure the manuscript i
 \subsection{Appendix H. Interpretable Baseline and Fallback Policy (Route B)}\label{app:routeb}
 Route B provides transparent benchmarks and a conservative fallback. All Route B tables in this appendix are generated from the same
 baseline evaluation pipeline and are included for comparison and deployment risk control, not as the primary results.
-\paragraph{Task 1: baseline + regime AR(1) predictor.}
+\paragraph{Task 1: baseline + regime $AR(1)$ predictor.}
 We estimate a time-of-day baseline $\mu(\tau)$ from historical averages over 5-minute slices. Let $e_t=y_t-\mu(\tau(t))$ be the residual.
-We fit separate AR(1) coefficients $\phi_{\text{wd}}$ and $\phi_{\text{we}}$ for weekday/weekend:
+We fit separate $AR(1)$ coefficients $\phi_{\text{wd}}$ and $\phi_{\text{we}}$ for weekday/weekend:
 \[
 e_{t+1}=\phi_{r(t)}e_t+\eta_t,\qquad r(t)\in\{\text{weekday},\text{weekend}\},
 \]
@@ -1323,6 +1303,8 @@ parking while also exposing its repositioning cost (empty travel), which is repo
 \input{project/outputs/latex_table_task3_windows.tex}
 Under our parking-only evaluator (without full dispatch), last\_stop reduces to a no-reposition baseline and coincides with the lobby-initialized configuration.
 
+\section{Complete Files for Problem B}
+Please refer to \href{https://github.com/charles65536/model2026}{SZETO} and \href{https://github.com/Jincan-LI-HUB/2026_MCM_Simulation_Problem_B/tree/main}{LI} for complete instructions and codes.
 
 % =========================
 % Report on Use of AI (Appendix - NOT counted in main 25 pages if your rule allows)
@@ -1410,11 +1392,11 @@ Quickly learn our model—I want to start from our two .docx files and one .ipyn
 What exactly our model is trying to accomplish,
 How we implemented it,
 And how we should explain it clearly.
-To communicate this effectively, what tools do we need to present our technical approach? (Please refer to \href{https://github.com/Jincan-LI-HUB/2026_MCM_Simulation_Problem_B/blob/master/AI_declaration_files/chatgpt_learn.md}{chatgpt\_debug.md}for detailed information)}
+To communicate this effectively, what tools do we need to present our technical approach? (Please refer to \href{https://github.com/Jincan-LI-HUB/2026_MCM_Simulation_Problem_B/blob/master/AI_declaration_files/chatgpt_learn.md}{chatgpt\_learn.md}for detailed information)}
 
 \textbf{Output:}
 
-\textit{Please refer to \href{https://github.com/Jincan-LI-HUB/2026_MCM_Simulation_Problem_B/blob/master/AI_declaration_files/chatgpt_learn.md}{chatgpt\_debug.md}}
+\textit{Please refer to \href{https://github.com/Jincan-LI-HUB/2026_MCM_Simulation_Problem_B/blob/master/AI_declaration_files/chatgpt_learn.md}{chatgpt\_learn.md}}
 
 \textbf{Purpose:} Learn how the model works, and lay a solid foundation to interact with teammates with high efficiency. 
 

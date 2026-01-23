@@ -32,7 +32,7 @@
 \contentsline {subsubsection}{\numberline {4.4.3}Solution and Assignment}{11}{subsubsection.4.4.3}%
 \contentsline {subsubsection}{\numberline {4.4.4}Execution Policy}{11}{subsubsection.4.4.4}%
 \contentsline {subsection}{\numberline {4.5}Interpretable Baseline and Fallback Policy (Route B)}{11}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}Task 1: time-of-day baseline + regime AR(1).}{11}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.1}Task 1: time-of-day baseline + regime $AR(1)$.}{11}{subsubsection.4.5.1}%
 \contentsline {subsubsection}{\numberline {4.5.2}Task 2: Rule-based real-time traffic state classification Model.}{11}{subsubsection.4.5.2}%
 \contentsline {subsubsection}{\numberline {4.5.3}Task 3: zone-based state-aware parking rule.}{12}{subsubsection.4.5.3}%
 \contentsline {subsubsection}{\numberline {4.5.4}Deployment Fallback: When to Switch from Route A to Route B}{12}{subsubsection.4.5.4}%
@@ -59,13 +59,14 @@
 \contentsline {subsection}{\numberline {A.3}Appendix C. Mode Clustering Configuration and Naming}{17}{subsection.A.3}%
 \contentsline {subsection}{\numberline {A.4}Appendix D. Weighted 1D $k$-Median Solution Sketch}{17}{subsection.A.4}%
 \contentsline {subsection}{\numberline {A.5}Appendix E. Simulation Assumptions and Parameters}{17}{subsection.A.5}%
-\contentsline {subsection}{\numberline {A.6}Appendix F. Additional Results (Stress Tests)}{17}{subsection.A.6}%
+\contentsline {subsection}{\numberline {A.6}Appendix F. Additional Results (Stress Tests)}{18}{subsection.A.6}%
 \contentsline {subsection}{\numberline {A.7}Appendix G. Reproducibility Checklist}{18}{subsection.A.7}%
 \contentsline {subsection}{\numberline {A.8}Appendix H. Interpretable Baseline and Fallback Policy (Route B)}{18}{subsection.A.8}%
-\contentsline {paragraph}{Task 1: baseline + regime AR(1) predictor.}{18}{paragraph*.21}%
-\contentsline {paragraph}{Task 2: rule-based traffic state classifier with robust thresholds.}{18}{paragraph*.22}%
+\contentsline {paragraph}{Task 1: baseline + regime $AR(1)$ predictor.}{18}{paragraph*.21}%
+\contentsline {paragraph}{Task 2: rule-based traffic state classifier with robust thresholds.}{19}{paragraph*.22}%
 \contentsline {paragraph}{Task 3: zone-based parking allocation.}{19}{paragraph*.23}%
 \contentsline {subsection}{\numberline {A.9}Validation}{19}{subsection.A.9}%
+\contentsline {section}{\numberline {B}Complete Files for Problem B}{20}{appendix.B}%
 \contentsline {paragraph}{Language and Writing Support}{}{paragraph*.28}%
 \contentsline {paragraph}{Code Drafting Assistance}{}{paragraph*.29}%
 \contentsline {paragraph}{Explicitly Excluded Uses of AI}{}{paragraph*.30}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.4)  23 JAN 2026 20:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.8.4)  23 JAN 2026 21:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1020,37 +1020,30 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/texlive/2025/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '6.4.1'
 ))
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 301.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 300.
  (c:/texlive/2025/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (./problem_b_report.aux
-
-LaTeX Warning: Label `sec:modeling' multiply defined.
-
-
-LaTeX Warning: Label `tab:task3-strategy' multiply defined.
-
-)
+) (./problem_b_report.aux)
 \openout1 = `problem_b_report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 301.
-LaTeX Font Info:    ... okay on input line 301.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 301.
-LaTeX Font Info:    ... okay on input line 301.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 301.
-LaTeX Font Info:    ... okay on input line 301.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 301.
-LaTeX Font Info:    ... okay on input line 301.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 301.
-LaTeX Font Info:    ... okay on input line 301.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 301.
-LaTeX Font Info:    ... okay on input line 301.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 301.
-LaTeX Font Info:    ... okay on input line 301.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 301.
-LaTeX Font Info:    ... okay on input line 301.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 301.
-LaTeX Font Info:    ... okay on input line 301.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 300.
+LaTeX Font Info:    ... okay on input line 300.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 300.
+LaTeX Font Info:    ... okay on input line 300.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 300.
+LaTeX Font Info:    ... okay on input line 300.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 300.
+LaTeX Font Info:    ... okay on input line 300.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 300.
+LaTeX Font Info:    ... okay on input line 300.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 300.
+LaTeX Font Info:    ... okay on input line 300.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 300.
+LaTeX Font Info:    ... okay on input line 300.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 300.
+LaTeX Font Info:    ... okay on input line 300.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 300.
+LaTeX Font Info:    ... okay on input line 300.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1086,22 +1079,22 @@ LaTeX Font Info:    ... okay on input line 301.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 301.
-Package microtype Info: Applying patch `item' on input line 301.
-Package microtype Info: Applying patch `toc' on input line 301.
-Package microtype Info: Applying patch `eqnum' on input line 301.
+LaTeX Info: Redefining \microtypecontext on input line 300.
+Package microtype Info: Applying patch `item' on input line 300.
+Package microtype Info: Applying patch `toc' on input line 300.
+Package microtype Info: Applying patch `eqnum' on input line 300.
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 301.
+Package microtype Warning: Unable to apply patch `footnote' on input line 300.
 
-Package microtype Info: Applying patch `verbatim' on input line 301.
-LaTeX Info: Redefining \microtypesetup on input line 301.
+Package microtype Info: Applying patch `verbatim' on input line 300.
+LaTeX Info: Redefining \microtypesetup on input line 300.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 301.
+LaTeX Info: Redefining \showhyphens on input line 300.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1126,7 +1119,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 301.
+Package hyperref Info: Link coloring ON on input line 300.
  (./problem_b_report.out) (./problem_b_report.out)
 \@outlinefile=\write5
 \openout5 = `problem_b_report.out'.
@@ -1138,45 +1131,45 @@ Package caption Info: End \AtBeginDocument code.
 
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 404.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 401.
 (c:/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 412.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 403.
  (c:/texlive/2025/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 412.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 403.
  (c:/texlive/2025/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 412.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 403.
  (c:/texlive/2025/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 412.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 403.
  (c:/texlive/2025/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 412.
+(Font)              <9> on input line 403.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 412.
+(Font)              <6> on input line 403.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 412.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 412.
+(Font)              <5> on input line 403.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 403.
  (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (c:/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 412.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 403.
  (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (c:/texlive/2025/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+esint on input line 412.
+LaTeX Font Info:    Trying to load font information for U+esint on input line 403.
  (c:/texlive/2025/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
 )
@@ -1224,7 +1217,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
 
 [3]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 590.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 586.
  (c:/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1242,40 +1235,40 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
 
 [4]
-<figures/response_time_distribution.pdf, id=399, 714.86354pt x 426.0605pt>
+<figures/response_time_distribution.pdf, id=404, 714.86354pt x 426.0605pt>
 File: figures/response_time_distribution.pdf Graphic file (type pdf)
 <use figures/response_time_distribution.pdf>
-Package pdftex.def Info: figures/response_time_distribution.pdf  used on input line 657.
+Package pdftex.def Info: figures/response_time_distribution.pdf  used on input line 651.
 (pdftex.def)             Requested size: 238.23642pt x 141.98514pt.
-<figures/hourly_calls.pdf, id=400, 570.16199pt x 317.69627pt>
+<figures/hourly_calls.pdf, id=405, 570.16199pt x 317.69627pt>
 File: figures/hourly_calls.pdf Graphic file (type pdf)
 <use figures/hourly_calls.pdf>
-Package pdftex.def Info: figures/hourly_calls.pdf  used on input line 663.
+Package pdftex.def Info: figures/hourly_calls.pdf  used on input line 656.
 (pdftex.def)             Requested size: 238.23642pt x 132.74315pt.
-<figures/hourly_up_down.pdf, id=401, 716.01505pt x 354.86137pt>
+<figures/hourly_up_down.pdf, id=406, 716.01505pt x 354.86137pt>
 File: figures/hourly_up_down.pdf Graphic file (type pdf)
 <use figures/hourly_up_down.pdf>
-Package pdftex.def Info: figures/hourly_up_down.pdf  used on input line 674.
+Package pdftex.def Info: figures/hourly_up_down.pdf  used on input line 665.
 (pdftex.def)             Requested size: 238.23642pt x 118.06842pt.
-<figures/elevator_usage_by_hour.pdf, id=402, 716.2089pt x 426.65146pt>
+<figures/elevator_usage_by_hour.pdf, id=407, 716.2089pt x 426.65146pt>
 File: figures/elevator_usage_by_hour.pdf Graphic file (type pdf)
 <use figures/elevator_usage_by_hour.pdf>
-Package pdftex.def Info: figures/elevator_usage_by_hour.pdf  used on input line 680.
+Package pdftex.def Info: figures/elevator_usage_by_hour.pdf  used on input line 670.
 (pdftex.def)             Requested size: 238.23642pt x 141.91516pt.
-<figures/hourly_calls_weekday_vs_weekend.pdf, id=403, 1003.98967pt x 356.91718pt>
+<figures/hourly_calls_weekday_vs_weekend.pdf, id=408, 1003.98967pt x 356.91718pt>
 File: figures/hourly_calls_weekday_vs_weekend.pdf Graphic file (type pdf)
 <use figures/hourly_calls_weekday_vs_weekend.pdf>
-Package pdftex.def Info: figures/hourly_calls_weekday_vs_weekend.pdf  used on input line 690.
+Package pdftex.def Info: figures/hourly_calls_weekday_vs_weekend.pdf  used on input line 678.
 (pdftex.def)             Requested size: 496.33032pt x 176.44308pt.
-<figures/hall_calls_heatmap_weekday.pdf, id=404, 722.7pt x 433.62pt>
+<figures/hall_calls_heatmap_weekday.pdf, id=409, 722.7pt x 433.62pt>
 File: figures/hall_calls_heatmap_weekday.pdf Graphic file (type pdf)
 <use figures/hall_calls_heatmap_weekday.pdf>
-Package pdftex.def Info: figures/hall_calls_heatmap_weekday.pdf  used on input line 698.
+Package pdftex.def Info: figures/hall_calls_heatmap_weekday.pdf  used on input line 685.
 (pdftex.def)             Requested size: 238.23642pt x 142.94286pt.
-<figures/hall_calls_heatmap_weekend.pdf, id=405, 722.7pt x 433.62pt>
+<figures/hall_calls_heatmap_weekend.pdf, id=410, 722.7pt x 433.62pt>
 File: figures/hall_calls_heatmap_weekend.pdf Graphic file (type pdf)
 <use figures/hall_calls_heatmap_weekend.pdf>
-Package pdftex.def Info: figures/hall_calls_heatmap_weekend.pdf  used on input line 704.
+Package pdftex.def Info: figures/hall_calls_heatmap_weekend.pdf  used on input line 690.
 (pdftex.def)             Requested size: 238.23642pt x 142.94286pt.
 
 
@@ -1305,10 +1298,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
 
 [7] (./project/outputs/latex_table_task1.tex)
-<project/outputs/fig/task1_pred_vs_true.pdf, id=752, 462.52798pt x 346.89601pt>
+<project/outputs/fig/task1_pred_vs_true.pdf, id=757, 462.52798pt x 346.89601pt>
 File: project/outputs/fig/task1_pred_vs_true.pdf Graphic file (type pdf)
 <use project/outputs/fig/task1_pred_vs_true.pdf>
-Package pdftex.def Info: project/outputs/fig/task1_pred_vs_true.pdf  used on input line 831.
+Package pdftex.def Info: project/outputs/fig/task1_pred_vs_true.pdf  used on input line 814.
 (pdftex.def)             Requested size: 372.24774pt x 279.20041pt.
  (./project/outputs/tab/task1_metrics.tex)
 
@@ -1329,31 +1322,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
 
 [9{c:/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc} <./project/outputs/fig/task1_pred_vs_true.pdf>] (./project/outputs/tab/task2_cluster_profile.tex)
-<project/outputs/fig/task2_mode_heatmap.pdf, id=815, 462.52798pt x 346.89601pt>
+<project/outputs/fig/task2_mode_heatmap.pdf, id=820, 462.52798pt x 346.89601pt>
 File: project/outputs/fig/task2_mode_heatmap.pdf Graphic file (type pdf)
 <use project/outputs/fig/task2_mode_heatmap.pdf>
-Package pdftex.def Info: project/outputs/fig/task2_mode_heatmap.pdf  used on input line 869.
+Package pdftex.def Info: project/outputs/fig/task2_mode_heatmap.pdf  used on input line 851.
 (pdftex.def)             Requested size: 372.24774pt x 279.20041pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 878.
+(Font)              <12> on input line 859.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 878.
+(Font)              <8> on input line 859.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 878.
+(hyperref)                removing `math shift' on input line 859.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 878.
+(hyperref)                removing `math shift' on input line 859.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 887.
+(hyperref)                removing `math shift' on input line 868.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 887.
+(hyperref)                removing `math shift' on input line 868.
 
 
 
@@ -1365,7 +1358,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
 
 [10 <./project/outputs/fig/task2_mode_heatmap.pdf>]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 907.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 888.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 906.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 906.
+
 
 
 
@@ -1412,8 +1414,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
 
 [15] (./problem_b_report.bbl)
-Overfull \hbox (349.44157pt too wide) in paragraph at lines 1178--1202
- [][] 
+Underfull \hbox (badness 10000) in paragraph at lines 1175--1175
+[]|\T1/lmtt/m/n/10 Time\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10 Elevator ID\T1/lmr/m/n/10 (+20) ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1178--1178
+[]|\T1/lmtt/m/n/10 Time\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10 Car ID\T1/lmr/m/n/10 (+20) , \T1/lmtt/m/n/10 Floor\T1/lmr/m/n/10 (+20) ,
  []
 
 
@@ -1428,11 +1435,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [16]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1231.
+(hyperref)                removing `math shift' on input line 1211.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1231.
+(hyperref)                removing `math shift' on input line 1211.
 
 
 
@@ -1443,7 +1450,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
 
-[17] (./project/outputs/tab/appendixF_stress.tex) (./project/outputs/latex_table_task3.tex)
+[17] (./project/outputs/tab/appendixF_stress.tex)
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1452,7 +1459,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
 
-[18] (./project/outputs/latex_table_task1_by_state.tex) (./project/outputs/latex_table_task3_windows.tex)
+[18] (./project/outputs/latex_table_task3.tex) (./project/outputs/latex_table_task1_by_state.tex) (./project/outputs/latex_table_task3_windows.tex)
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1462,12 +1469,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
 
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 1370--1371
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 22.59052pt, for example:
+(fancyhdr)                \setlength{\headheight}{22.59052pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-10.59052pt}.
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 1352--1353
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1372--1374
+Underfull \hbox (badness 10000) in paragraph at lines 1354--1356
 
  []
 
@@ -1484,7 +1500,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1427 
+l.1409 
         [1
 
 ]
@@ -1500,32 +1516,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1470 \end{document}
+l.1452 \end{document}
                       [2] (./problem_b_report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `problem_b_report.out' has not changed.
-(rerunfilecheck)             Checksum: D623CE289DDFC3A9664B3216479D31FF;14366.
+(rerunfilecheck)             Checksum: 79A097CD53A38820FC99FA50A4C190E7;14563.
  ) 
 Here is how much of TeX's memory you used:
- 47031 strings out of 475118
- 1061536 string characters out of 5765021
- 1697362 words of memory out of 5000000
- 68740 multiletter control sequences out of 15000+600000
- 681694 words of font info for 292 fonts, out of 8000000 for 9000
+ 47037 strings out of 475118
+ 1061612 string characters out of 5765021
+ 1697395 words of memory out of 5000000
+ 68742 multiletter control sequences out of 15000+600000
+ 681776 words of font info for 293 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  84i,13n,96p,1083b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt9.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on problem_b_report.pdf (22 pages, 638179 bytes).
+Output written on problem_b_report.pdf (23 pages, 641284 bytes).
 PDF statistics:
- 1140 PDF objects out of 1200 (max. 8388607)
- 692 compressed objects within 7 object streams
- 147 named destinations out of 1000 (max. 500000)
- 69282 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 1152 PDF objects out of 1200 (max. 8388607)
+ 702 compressed objects within 8 object streams
+ 149 named destinations out of 1000 (max. 500000)
+ 69290 words of extra memory for PDF output out of 74296 (max. 10000000)
 

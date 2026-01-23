@@ -1,0 +1,1199 @@
+% ======================================
+% HKUSTGZ 25-26 General mode for Jincan LI to formally record his NOTES and HOMEWORKS
+% ======================================
+
+% ======================================
+% set document class and page layout
+% \documentclass[twocolumn, a4paper]{article} % two-column mode, used in situations with limited pages (e.g. MCM tasks, reports)
+\documentclass[a4paper,10pt]{article} % one-column mode, most commonly used in NOTES and ESSAYS
+% u can also change the 'artical' into report or book if needed 
+\usepackage{multicol} % 多栏支持，特别是在图片和表的排版上很有用，但是需要注意可能会与twocolumn冲突
+% ======================================
+
+
+
+
+% % --- 英语课程特定配置 ---
+% \usepackage{setspace} 
+% \onehalfspacing % 1.5倍行距，便于阅读
+% % ------------------------
+
+% ===========自定义命令==============
+% \newcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}   % 偏导
+% \newcommand{\PD}[2]{\frac{\partial #1}{\partial #2}}   % 另一种偏导写法
+% \newcommand{\eq}[1]{Eq.~(\ref{#1})}                    % 引用公式
+% \newcommand{\fig}[1]{Figure~\ref{#1}}                  % 引用图
+
+% ----(数学,注意检查一下有没有重复)---
+% \newcommand{\tab}[1]{Table~\ref{#1}}
+% \newcommand{\dd}{\mathrm{d}} % 微分符号 d 需正体
+% \newcommand{\dx}{\,\mathrm{d}x}
+% \newcommand{\limit}[2]{\lim_{#1 \to #2}}
+% \newcommand{\pard}[2]{\frac{\partial #1}{\partial #2}} % 偏导数
+
+% --- 线性代数特定配置 ---
+% \usepackage{bm} % 粗体向量
+% % --- 极速输入快捷键 (First Principles: 减少按键次数) ---
+% \newcommand{\R}{\mathbb{R}} % 实数集 R
+% \newcommand{\C}{\mathbb{C}} % 复数集 C
+% \newcommand{\N}{\mathbb{N}} % 自然数集
+% \newcommand{\bvec}[1]{\mathbf{#1}} % 向量加粗，如 \bvec{x}
+% \newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}} % 快速写矩阵
+% \newcommand{\trans}{^\top} % 转置符号 T
+% \newcommand{\inv}{^{-1}}   % 求逆符号 -1
+% \DeclareMathOperator{\rank}{rank} % 秩
+% \DeclareMathOperator{\tr}{tr}     % 迹
+% \DeclareMathOperator{\spanop}{span} % 生成空间
+
+% % --- 统计学特定配置 ---
+% % 常用算符
+% \newcommand{\Prob}[1]{P\left(#1\right)} % 概率 P(X)
+% \newcommand{\Exp}[1]{E\left[#1\right]}  % 期望 E[X]
+% \newcommand{\Var}[1]{\text{Var}\left(#1\right)} % 方差
+% \newcommand{\Cov}[1]{\text{Cov}\left(#1\right)} % 协方差
+% \newcommand{\indep}{\perp \!\!\! \perp} % 独立符号
+% % 常用分布
+% \newcommand{\Norm}{\mathcal{N}} % 正态分布 N
+% \newcommand{\Bin}{\text{Bin}}   % 二项分布
+% \newcommand{\Poi}{\text{Pois}}  % 泊松分布
+% % 回归分析常用
+% \newcommand{\yhat}{\hat{y}}     % 预测值 y hat
+% \newcommand{\betahat}{\hat{\beta}}
+% 了解怎么写就好了，具体用不着就不写
+
+%  --- 物理特定配置 ---
+% \usepackage{siunitx} % 国际单位制排版神器
+% \sisetup{unit-mode=text} % 避免数学字体下的单位倾斜
+% % 常用物理符号
+% \newcommand{\vect}[1]{\vec{#1}} % 物理常用箭头向量，或者用 \mathbf
+% \newcommand{\grad}{\nabla}      % 梯度算子
+% \newcommand{\degree}{^\circ}    % 角度
+
+% =========计算机相关论文可以加==========
+\usepackage{algorithm}      % 提供 algorithm 环境，给算法加编号、标题
+\usepackage{algpseudocode}  % 提供 algorithmic 环境，支持伪代码的标准语法（If/For/While/Return 等），美赛中展示算法逻辑必备。
+% 定义伪代码自定义关键词（解决 \Initialize 未定义）
+\algnewcommand{\Initialize}{\State \t\textbf{Initialize:} } % 初始化关键词
+\algnewcommand{\ArgMin}{\arg\min} % 统一 argmin 写法（可选）
+
+
+% ======================================
+% packages to finish his documents:
+% \usepackage[margin=0.5in, top=1.0in, bottom=0.7in, columnsep=0.4in]{geometry} % page layout for 2 column mode (with tighter margin) 
+\usepackage[margin=0.7in, top=0.7in, bottom=0.7in]{geometry} % page layout for 1 column mode(you can also not set it, then it will be the default setting)
+\usepackage{microtype} % 更好的微排版
+% --------------------------------------
+\usepackage[T1]{fontenc} % 输出字体编码
+\usepackage[utf8]{inputenc} % 输入字符编码
+% --------------------------------------
+\usepackage{lmodern}                    % 更好看的 Latin Modern 字体
+% 对了，如果你想换字体的话也可以用这些方案：
+% %方案2：非要用Palatino时（删除上面的lmodern，用下面3行）
+% \usepackage{mathpazo}  % Palatino正文+数学核心
+% \usepackage{helvet}    % 配套无衬线字体
+% \usepackage{courier}   % 配套等宽字体
+% 方案3：Times New Roman（删除上面的lmodern，用下面2行）
+% \usepackage{newtxtext} % Times西文
+% \usepackage{newtxmath} % Times数学
+
+\usepackage{graphicx} % 插入图片
+\usepackage{amsmath, amssymb, amsthm} % 数学公式
+\usepackage{amsbsy} % 数学字体
+\usepackage{mathtools}  % 改进 amsmath
+                        % % 1. 更灵活的公式对齐（解决amsmath的小缺陷）
+                        % \begin{align*}
+                        % f(x) &= x^2 + 3x + 2 \\
+                        % g(x) &= \underbrace{(x+1)(x+2)}_{\text{因式分解}} % mathtools的\underbrace增强
+                        % \end{align*}
+
+                        % % 2. 自定义带括号的数学符号（原生LaTeX做不到）
+                        % \DeclarePairedDelimiter\abs{\lvert}{\rvert} % 定义绝对值符号
+                        % $\abs{x}$ % 基础用法：|x|
+                        % $\abs*{x + y}$ % 带*自动适配大小：|x+y|
+
+                        % % 3. 数学符号的换行对齐（适合长公式）
+                        % \[
+                        % \sum_{n=1}^\infty \mathtoolsset{showonlyrefs} % 只显示引用的公式编号
+                        % \frac{1}{n^2} = \frac{\pi^2}{6}
+                        % \]
+\usepackage{bm} % 粗体希腊字母 \bm{\alpha}
+% 错误用法：\t\textbf{x} 只能加粗文本，数学环境中无效
+% $\t\textbf{x}$ % 效果：x（无加粗）
+
+% 正确用法：\bm{} 加粗数学符号
+% $\bm{x}$ % 向量x（加粗）
+% $\bm{\sum_{n=1}^\infty \frac{1}{n^2}}$ % 加粗整个公式
+% $\bm{A}_{ij}$ % 矩阵A的第ij元素（仅A加粗）
+\usepackage{esint} % 更多样的积分符号
+
+\usepackage{titling} % 标题设置
+\usepackage{titlesec} % 自定义标题格式
+\usepackage{float} % 图片浮动控制
+\usepackage{lipsum} % 生成示例文本
+\usepackage{enumitem} % 列表设置
+\usepackage{hyperref} % 超链接
+\usepackage{caption} % 图表标题
+\usepackage{subcaption} % 子图表
+\usepackage{tabularx} % 自适应宽度表格
+\usepackage{setspace} % 行间距控制
+\usepackage{fancyhdr} % 页眉页脚
+\usepackage{url} % 超链接
+\usepackage{hyperref} % 超链接
+\usepackage{booktabs}       % 表格
+\usepackage{array}          % 更好看的表格列定义
+\usepackage{multirow}       % 跨行
+\usepackage{listings} % 代码块
+\usepackage[numbers,sort&compress,square]{natbib} % 参考文献科技类文献引用格式[1]
+% ------APA格式的话就这么写--------
+% % \usepackage[
+%     style=apa,                % 强制遵循 APA 7 格式（唯一正确的 APA 7 样式）
+%     backend=biber,            % 指定编译工具为 biber（必须）
+%     natbib=true,              % 兼容你熟悉的 \citep/\citet 命令（可选但推荐）
+%     uniquename=init,          % 处理同名作者时显示首字母（APA 7 要求）
+%     maxcitenames=3            % 文内引用作者数≤3时全显，>3时用 et al.（APA 7 规则）
+% ]{biblatex}
+% \addbibresource{myrefs.bib} % 关联你的.bib文件（不用写.bib后缀）
+% ----------------------------------    
+% 科技类文献的文内引用： 自动生成[1]上角标
+% APA格式的文内引用：\citet{条目名} 生成“作者（年份）”， \citep{条目名} 生成“（作者，年份）”
+% ----------------------------------
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    tabsize=2,
+    breaklines=true,
+    showstringspaces=false
+}
+% hyperlink settings
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue, 
+    urlcolor=blue,
+    pdfborder={0 0 0}  % 关键：去掉边框
+}
+\usepackage{xcolor}   % 代码块颜色
+% ===========荧光笔highlight操作================
+% -----------颜色定义----------------
+% \definecolor{refblue}{HTML}{A3C4F3}   
+% \definecolor{repgreen}{HTML}{C8E6C9}  
+% \definecolor{transorange}{HTML}{FFD54F} 
+% \definecolor{subviolet}{HTML}{E1BEE7}  
+% \definecolor{ellipgray}{HTML}{E0E0E0}  
+% 这里可以根据需要定义更多颜色
+% ----------定义highlight命令-----------
+% \newcommand{\refhl}[1]{\sethlcolor{refblue}\hl{#1}}     % Reference
+% \newcommand{\rephl}[1]{\sethlcolor{repgreen}\hl{#1}}    % Repetition
+% \newcommand{\transhl}[1]{\sethlcolor{transorange}\hl{#1}} % Transition
+% \newcommand{\subhl}[1]{\sethlcolor{subviolet}\hl{#1}}   % Substitution
+% \newcommand{\elliphl}[1]{\sethlcolor{ellipgray}\hl{#1}} % Ellipsis
+% ----------------------------------
+% 此后在文中只需要使用 \refhl{...}, \rephl{...}, \transhl{...}, \subhl{...}, \elliphl{...} 即可使得里面的...内容高亮显示为对应颜色
+% ===============================================
+
+% ==========画图的设置==================
+\usepackage{tikz} % TikZ 画图
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}            % 最新版兼容性必须加！
+% \tikzset{myplotstyle/.style={red, thick, mark=triangle}}   % 也可以通过设计全局变量如左，然后在\addplot中使用myplotstyle调用如：
+% \addplot[myplotstyle] coordinates {...}; % 复用样式于文中
+% ======================================
+
+%========== 标题、题号、定理环境 (选用)==========
+% \usepackage{titlesec}
+% \titleformat{\section}[block]{\large\bfseries\centering}{Problem \arabic{section}}{1em}{}
+% \titleformat{\subsection}[block]{\bfseries}{(\alph{subsection})}{0.5em}{}
+% ---------自己定义标题的样式-------------
+% \titleformat{<命令>}[<形状>]{<格式>}{<标签>}{<间距>}{<前缀>}[<后缀>]
+% <命令>    要自定义的标题层级：\section/\subsection/\subsubsection
+% <形状>	标题整体布局：block（块状，占满整行）、hang（悬挂式）等
+% <格式>	文字样式：\large（字号）、\bfseries（加粗）、\centering（居中）
+% <标签>	题号前缀 + 编号：如 Problem \arabic{section}（Problem 1、Problem 2）
+% <间距>	标签和标题文字的间距：1em（1 个字符宽度）、0.5em等
+% <前缀>	标题文字前的额外内容（可空）
+% <后缀>	标题文字后的额外内容（可选，用[]包裹）
+% ----------当然你也可以这么写------------
+% 科技论文风格：section左对齐、加粗、编号+点，subsection斜体
+% \titleformat{\section}[hang]{\bfseries\Large}{\thesection.}{0.5em}{}
+% \titleformat{\subsection}[hang]{\itshape\large}{\thesubsection.}{0.5em}{}
+% ----------------------------------------
+% 选择性使用!在文中就正常\section和\subsection即可
+% ========================================
+
+% =========可选：漂亮的定理环境（如果你要写证明）==========
+\usepackage[most]{tcolorbox}
+% 核心语法: 
+% \newtcolorbox{<环境名>}{<样式选项>}
+% colback=<颜色>	盒子背景色（如 gray!5!white：5% 灰色 + 95% 白色）
+% colframe=<颜色>	盒子边框色（如 blue!80!black：80% 蓝色 + 20% 黑色）
+% title=<标题>	盒子顶部标题（如 Definition、Theorem）
+% fonttitle=<样式>	标题文字样式（如 \bfseries 加粗）
+% width=<宽度>	盒子宽度（如 \linewidth 占满整行）
+% ----------示例定义（可直接复制粘贴）-----------
+\newtcolorbox{definition}{colback=gray!5!white,colframe=gray!80!black,title=Definition}
+\newtcolorbox{theorem}{colback=blue!5!white,colframe=blue!80!black,title=Theorem}
+\newtcolorbox{myproof}{colback=green!5!white,colframe=green!75!black, title=Proof}
+% 正文中使用示例见正文中
+% ----------写在定义区的彩色盒子环境配置-----------
+% 1. 定义环境：灰色系、关联章节编号、支持自定义参数
+% \newtcolorbox[auto counter, number within=section]{definition}[1][]{
+%     colback=gray!5!white,    % 浅灰背景（柔和不刺眼）
+%     colframe=gray!80!black,  % 深灰边框
+%     title=Definition \thetcbcounter, % 标题：Definition + 自动编号
+%     fonttitle=\bfseries,     % 标题加粗
+%     #1 % 允许传入自定义参数（临时改样式）
+% }
+
+% % 2. 定理环境：蓝色系、关联章节编号、支持自定义参数（你之前问的版本）
+% \newtcolorbox[auto counter, number within=section]{theorem}[1][]{
+%     colback=blue!5!white,
+%     colframe=blue!80!black,
+%     title=Theorem \thetcbcounter,
+%     fonttitle=\bfseries,
+%     #1
+% }
+
+% % 3. 证明环境：绿色系、无编号（证明通常跟随定理，无需独立编号）、支持自定义参数
+% \newtcolorbox{myproof}[1][]{
+%     colback=green!5!white,   % 浅绿背景
+%     colframe=green!75!black, % 深绿边框
+%     title=Proof,             % 证明无需编号，固定标题
+%     fonttitle=\bfseries,
+%     #1
+% }
+% 但事实上那大部分情况下你并不需要这些彩色小盒子
+% ===========================================
+
+% =============页眉设置 - 更突出==============
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\bfseries Group:\\M2026232} % 左侧页眉，加粗突出
+\fancyhead[R]{\bfseries Problem B:\\The Elevator Pitch} % 右侧页眉，加粗突出
+\fancyhead[C]{\bfseries 2026 MCM\\Train} % 中间页眉，加粗突出
+\renewcommand{\headrulewidth}{0.6pt} % 加粗页眉下划线
+\fancyfoot[C]{\thepage} % 页脚居中显示页码
+\fancyheadoffset{0pt}
+% ============================================
+% 确保首页页眉一致
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[L]{\bfseries Group:\\M2026232}
+    \fancyhead[R]{\bfseries Problem B:\\The Elevator Pitch}
+    \fancyhead[C]{\bfseries 2026 MCM\\Train}
+    \renewcommand{\headrulewidth}{0.6pt} % 保持页眉下划线
+    \fancyfoot[C]{\thepage}
+}
+% ============================================
+
+\begin{document}
+% ===================================
+% % 紧凑的图表标题格式
+% \captionsetup{font=footnotesize, labelfont=bf, skip=0.3em}
+% % 更紧凑的段落和行间距
+% \setlength{\parskip}{0.2em}
+% \linespread{0.6} % 单倍行距
+% \setlength{\parindent}{1em} % 段落缩进
+% % 减小列表间距
+% \setlist{topsep=0.4em, partopsep=0em, itemsep=0.1em, parsep=0em} % 更紧凑
+% 美赛的行间距设置：
+% 1. 移除列表（itemize/enumerate）的额外间距（美赛省空间）
+\setlist{nosep} % 配合你已有的enumitem宏包使用
+% 2. 减小段落间距（默认间距太大，美赛需紧凑）
+\setlength{\parskip}{0.3\baselineskip}
+% 3. 轻微减小行间距（不影响可读性，进一步紧凑）
+\linespread{0.80}
+% =-======================标题以及作者===========================
+% ---------------------示例一：紧凑版本--------------------------
+% \pretitle{\begin{center}\Large\bfseries}
+% \posttitle{\end{center}\vskip -0.1em}
+% \title{Please text your title here!}
+%     % 作者信息（四个成员区块，更紧凑）
+% \author{
+%     \begin{minipage}[t]{0.30\textwidth}
+%         \centering
+%         \small\bfseries Wenlue CHAI\\
+%         \tiny wchai181@connect.hkust-gz.edu.cn
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}[t]{0.30\textwidth}
+%         \centering
+%         \small\bfseries Jincan LI\\
+%         \tiny jli843@connect.hkust-gz.edu.cn
+%     \end{minipage}
+%     \hfill
+%     \begin{minipage}[t]{0.30\textwidth}
+%         \centering
+%         \small\bfseries Zixuan SITU\\
+%         \tiny zxszeto656@connect.hkust-gz.edu.cn
+%     \end{minipage}
+% }
+% \date{} 
+% \predate{}
+% \postdate{}
+% --------------------------------------------------------------
+% ---------------------示例二：宽松版本--------------------------
+% \setlength{\parskip}{0.8em}
+% \setlength{\parindent}{2em}
+% \title{Solutions to Assignment 2: Games on Integers}
+% \author{Jincan Li \\ 50032637 \\ jli843@connect.hkust-gz.edu.cn}
+% \date{Nov. 2025}
+% --------------------------------------------------------------
+% ---------------------示例三：标题页版本--------------------------
+% \begin{titlepage}
+%     \centering
+%     \vspace*{2cm}
+%     {\LARGE\bfseries Please text your title here! \par}
+%     \vspace{2cm}
+%     {\Large Group M2026232 \par}
+%     \vspace{2cm}
+%     {\Large Wenlue CHAI\\wchai181@connect.hkust-gz.edu.cn\\
+%     \Large Zixuan SITU\\zxszeto656@connect.hkust-gz.edu.cn\\
+%     \Large Jincan LI\\jli843@connect.hkust-gz.edu.cn
+%     \vspace{1cm}
+%     \par \today}
+%     \vfill
+% \end{titlepage}
+% \clearpage
+% --------------------------------------------------------------
+% =============================================================
+% \maketitle % 生成标题用titlepage时就不用这个命令了
+% =============================Summary Sheet页=============================
+\thispagestyle{empty}
+\pagenumbering{gobble} % 彻底禁止页码（可选）
+\begin{center}
+    \t\textbf{\LARGE Summary Sheet} \\
+    \vspace{0.5em}
+    Team \#M2026232
+\end{center}
+\n\noindent 
+
+\n\noindent
+\small
+\t\textbf{Problem.} Using only the provided elevator operational logs, design a practical control policy to (i) forecast short-horizon demand,
+(ii) identify the current traffic regime, and (iii) proactively park idle elevators to reduce passenger waiting and long-wait events.
+
+\vspace{0.6em}
+\t\textbf{Modeling approach.}
+\begin{itemize}[leftmargin=1.2em,itemsep=0.25em,topsep=0.25em]
+  \item \t\textbf{Task 1 (Forecasting):} Aggregate hall calls into 5-minute slices and predict next-slice demand with a gradient-boosted decision tree using cyclical time features, lags, and rolling statistics.
+  \item \t\textbf{Task 2 (Mode discovery):} Cluster 5-minute operational feature vectors (intensity, directionality, dispersion, inter-floor tendency, service pressure) with KMeans~\cite{macqueen1967kmeans}, then assign manager-friendly labels (e.g., \emph{Up-Peak}, \emph{Down-Peak}, \emph{Idle/Low}).
+  \item \t\textbf{Task 3 (Dynamic parking):} Learn a mode-conditioned floor-demand distribution and select parking floors for idle elevators by solving a weighted 1D $k$-median problem; reposition only idle cars to avoid disrupting service.
+  \item \t\textbf{Interpretable baseline (benchmark \& fallback):} A lightweight alternative pipeline using a time-of-day baseline + regime AR(1) for demand, a rule-based real-time traffic-state classifier, and a zone-based (Lobby/Mid/Upper) parking rule. We use it to benchmark gains and as a fail-safe rollback policy in deployment.
+\end{itemize}
+
+\vspace{0.6em}
+\t\textbf{Key results.} In a consistent comparative simulation, the proposed mode-aware policy delivers more consistent service than static parking baselines (``stay'' and ``return-to-lobby''), particularly during peak and transition periods. We emphasize \emph{relative} comparisons across strategies; absolute waiting-time magnitudes depend on calibration of travel/door parameters and are reported as simulation-time units.
+
+\vspace{0.6em}
+\t\textbf{Strengths and implementation.} The pipeline is (i) data-driven yet interpretable, (ii) lightweight and deployable as a supervisory layer, (iii) non-intrusive because it only repositions idle elevators, and (iv) robust across reasonable choices of cluster granularity and decision frequency.
+
+\vspace{0.6em}
+\t\textbf{Limitations.} The evaluation uses a simplified dispatch/arrival simulator and a single-building log period; field deployment should calibrate timing parameters and validate under seasonal or event-driven shifts.
+
+\normalsize
+\clearpage
+\pagenumbering{arabic} % 从下一页恢复页码
+% =============================================================
+% =============================目录页=============================
+{
+    \renewcommand{\baselinestretch}{0.92} % 临时缩小行距（0.85~0.95 可调）
+    \setlength{\parskip}{0pt}             % 消除段落间距
+    \setlength{\itemsep}{-2pt}            % 减小条目间距（关键！）
+    \tableofcontents
+}
+\clearpage
+
+% =============================================================
+
+% =================正文内容==================
+% 这里是正文内容的开始
+\section{Introduction}
+
+Modern high-rise and mixed-use buildings rely on elevator group control to maintain acceptable service quality under highly time-varying demand.\cite{cibse2020guided,strakosch2010vertical,barney2015elevatortraffic}
+Even when the mechanical system is fixed, software-level policies---especially \emph{proactive} repositioning of idle cars---can materially reduce
+passenger waiting during regime shifts such as morning up-peak, evening down-peak, and inter-floor movement.
+
+In this report, we develop a data-driven, interpretable framework to improve elevator performance using only the provided operational logs.
+Our approach combines (i) short-horizon demand forecasting, (ii) unsupervised traffic-mode discovery, and (iii) mode-aware dynamic parking
+formulated as a weighted 1D $k$-median problem. The final deliverable is a deployable policy that can be implemented as a supervisory layer
+on top of standard dispatching rules, accompanied by a management memo describing how to operationalize the method.
+
+The remainder of the paper is organized as follows. Section~\ref{sec:problem} decomposes the required tasks and states modeling assumptions.
+Section~\ref{sec:data} describes data processing, feature engineering, and exploratory findings. Section~\ref{sec:modeling} presents the
+forecasting--mode identification--parking optimization pipeline. Section~\r\ref{sec:results} evaluates performance and robustness, and
+Section~\ref{sec:memo} provides actionable recommendations for deployment.
+\section{Problem Decomposition and Analysis}\label{sec:problem}
+\subsection{Key Assumptions and Notation Explanation}
+To keep the proposed policy realistic and implementable, we adopt the following assumptions, consistent with typical group-control practice and
+the information available in the logs:
+\begin{itemize}
+  \item \t\textbf{Discrete decision epochs.} We make repositioning decisions every $\Delta=5$ minutes. Calls within each slice are treated as arriving
+  at their recorded timestamps.
+  \item \t\textbf{Non-interference.} Only \emph{idle} elevators are repositioned; in-service cars continue their current trips.
+  \item \t\textbf{Distance proxy.} Vertical travel effort is approximated by floor distance $|f-p|$. This motivates the 1D facility-location formulation
+  used for parking.
+  \item \t\textbf{Simulation time units.} Performance metrics (e.g., AWT) are computed from a lightweight discrete-event simulator under assumed travel
+  and door parameters. We interpret results comparatively across strategies; absolute times are scenario-dependent.
+\end{itemize}
+
+Notation used throughout the paper is summarized below. Floors are indexed by $f\in F$; $y_t$ denotes the number of hall calls in slice $t$; $m_t$ denotes
+the inferred traffic mode; and $w_f(m)$ denotes the mode-conditioned probability of calls originating from floor $f$.
+
+\subsection{Problem Decomposition}
+The MCM tasks can be organized into a closed-loop operational pipeline:
+\begin{enumerate}[label=(T\arabic*)]
+  \item \t\textbf{Forecast demand (Task 1).} Predict short-horizon call intensity to anticipate upcoming load.
+  \item \t\textbf{Identify the traffic regime (Task 2).} Cluster recent operational signals to obtain an interpretable mode label (e.g., Up-Peak, Down-Peak).
+  \item \t\textbf{Compute dynamic parking targets (Task 3).} Given the current mode and the set of idle elevators, choose parking floors that minimize expected
+  response distance.
+  \item \t\textbf{Evaluate and recommend (Task 4).} Compare the proposed strategy against baselines using service-quality metrics and summarize deployment
+  guidance in a memo.
+\end{enumerate}
+
+\subsection{Analysis of Key Problems}
+Two modeling challenges drive our design choices.
+\begin{itemize}
+  \item \t\textbf{Regime shifts and overlap.} Building traffic is not stationary: different times of day exhibit different directionality and spatial concentration.
+  Moreover, regimes overlap (e.g., inter-floor traffic can occur during peaks), so the model must be robust rather than overly reliant on sharp class separation.
+  \item \t\textbf{Actionability under limited control.} We do not redesign the dispatch algorithm; we only reposition idle cars. The control variable is therefore the
+  \emph{set of parking floors}. A natural objective is to minimize the demand-weighted distance from likely call origins to the nearest idle car.
+\end{itemize}
+These considerations motivate a three-part approach: a short-term predictor for demand context, an interpretable unsupervised mode classifier, and a
+mode-conditioned weighted 1D $k$-median optimizer for dynamic parking.
+
+\section{Data Processing and Analysis}\label{sec:data}
+This section describes the data cleaning procedures and presents key empirical observations derived from the processed datasets with exploratory visualization. With validation of data reliability, we extract evidence-based insights that directly inform subsequent problem decomposition and model design.
+
+\subsection{Data Cleaning Principles and Validation}
+\subsubsection{Cleaning Principles}
+Given that the raw datasets, though extensive, contain missing data and potentially inconsistencies, that would severely compromise the generality and extensibility of the models. Furthermore, the properties and practical significance of certain indicators in the dataset will also undermine the accuracy of data statistics. Therefore, to prepare the elevator datasets for robust mathematical modeling, we implemented a systematic cleaning process that ensures data integrity, consistency, and alignment with the problem's requirements for traffic prediction, mode classification, and dynamic parking strategies. Operations were executed in Python using Pandas, with code available in the appendices for reproducibility. This step mitigates potential biases from raw data artifacts, such as sensor errors or incomplete logs, enabling accurate time-series analysis. 
+
+The cleaning process follows several domain-specific principles:
+\begin{itemize}
+    \item \t\textbf{Integrity over completeness:} Only records violating physical or logical constraints were removed, resulting in retention rates exceeding 85\% for all major datasets.
+    \item \t\textbf{No artificial imputation for structural variables:} Discrete and semantically critical variables, such as floor numbers, were never imputed to avoid introducing spatial bias.
+    \item \t\textbf{Preservation of congestion signals:} Records with long waiting times or heavy passenger loads were retained, as they represent genuine system stress rather than noise.
+    \item \t\textbf{Domain consistency and standardization:} Time stamps were converted to datetime format, floors to integers, and physical constraints (e.g., passenger loads in [0, 2100] kg) were enforced.
+\end{itemize}
+These principles ensure that the cleaned data exhibit integrity, accuracy, domain consistency, validity, and operability, thereby providing directly support the problem's emphasis on adaptive models, as clean data reduces noise in predictions and optimizations.
+
+\subsubsection{Data Cleaning Operations}
+\label{subsubsec:cleaning_operations}
+As detailed in \t\textbf{Cleaning Principles}, all datasets were cleaned under four core principles. Table~\ref{tab:data-cleaning} summarizes retention rates and usage scope. Each dataset was processed according to its role in our modeling pipeline, with cleaning operations explicitly justified by domain constraints and task requirements:
+\begin{itemize}
+    \item Facing \t\textbf{missing or unparseable floor values} (e.g., \texttt{NaN} or strings like ``4,5'') in \texttt{hall\_calls.csv}, we removed records with no valid origin floor and split composite floor requests into individual calls; this ensures that every retained hall call can be unambiguously mapped to a physical floor, which is essential for constructing spatially resolved demand forecasts—the foundation of our short-term prediction and parking strategy.
+
+    \item Facing \t\textbf{inconsistent floor representations} (e.g., ``G'', ``B1'') and missing directions in \texttt{car\_stops.csv}, we converted floors to integers and inferred direction from sequential stop patterns; this yields a clean trajectory log that accurately reflects real elevator movements, enabling reliable validation of our simulated traffic modes against ground-truth stop behavior.
+
+    \item Facing \t\textbf{physically implausible load readings} (e.g., negative or >2100 kg) and \t\textbf{unordered timestamps} in \texttt{load\_changes.csv}, we filtered loads to the valid range [0, 2100] kg and sorted records by (\texttt{Car ID}, \texttt{Time}); this preserves temporal coherence of passenger flow and eliminates sensor artifacts, allowing us to estimate realistic boarding/alighting volumes for time-series simulation of elevator occupancy.
+
+    \item Facing \t\textbf{duplicate or out-of-order entries} in \texttt{maintenance\_mode.csv}, we deduplicated and chronologically sorted the maintenance logs; this provides a precise mask of non-operational periods, ensuring that all downstream analyses exclude times when elevators were offline—thus avoiding artificial underestimation of system demand.
+
+    \item Facing \t\textbf{raw timestamp and floor fields without standardization} in \texttt{car\_calls.csv} and \texttt{car\_departure-\\s.csv}, we applied consistent datetime and integer formatting; while these datasets are not used in our core predictive model, this minimal cleaning prepares them as auxiliary signals for future extensions (e.g., destination-aware dispatching), maintaining data readiness without over-processing.
+\end{itemize}
+This section details the data cleaning process for the elevator datasets, ensuring high-quality input for mathematical modeling in traffic prediction, operational mode classification, and dynamic parking strategies. Cleaning was performed using Python with Pandas, focusing on integrity, standardization, and domain-specific validations. Operations prioritize retaining representative data while removing invalid entries without bias. 
+
+\subsubsection{Data Cleaning outcomes and Validation}
+\label{subsubsec:cleaning_validation}
+Cleaned files can be found in the \t\textbf{Appendix}.
+\begin{table}[htbp]
+    \centering
+    \small
+    \setlength{\tabcolsep}{4pt} % 稍微压缩列间距
+    \begin{tabular}{l p{8cm} r}
+        \hline
+        \t\textbf{File} & \t\textbf{Operations} & \t\textbf{Retained (\%)} \\
+        \hline
+        \texttt{hall\_calls.csv} 
+            & Standardized time/direction; expanded multi-floor calls; removed NaN floors.
+            & 223,339 (86\%) \\
+            
+        \texttt{car\_stops.csv} 
+            & Standardized time/floors; inferred direction; removed invalid stops.
+            & 214,263 (98\%) \\
+            
+        \texttt{load\_changes.csv} 
+            & Standardized time/floors; filtered loads to [0, 2100] kg; sorted by car/time. 
+            & 216,884 (99\%) \\
+            
+        \texttt{maintenance\_mode.csv} 
+            & Standardized time; deduplicated and sorted. 
+            & 161 (100\%) \\
+            
+        \texttt{car\_calls.csv} 
+            & Standardized time/floors; filtered valid actions.  
+            & 255,971 (99\%) \\
+            
+        \texttt{car\_departures.csv} 
+            & Standardized time and floor fields. 
+            & 218,491 (100\%) \\
+        \hline
+    \end{tabular}
+    \caption{Summary of data cleaning operations, rationale, and retention rates.}
+    \label{tab:data-cleaning}
+\end{table}
+
+We validate our cleaning process along three criteria inspired by Xiong et al.~\cite{1583581}: (i) adherence to physical and operational constraints, (ii) preservation of task-relevant signals—particularly congestion and peak behavior—and (iii) retention of representative temporal patterns across weekdays, weekends, and traffic regimes. These criteria are especially critical in elevator modeling, where spatial accuracy, load realism, and timing fidelity directly affect prediction and control performance.
+
+All datasets satisfy these standards. The \texttt{hall\_calls.csv} file provides the most detailed illustration due to its central role in demand forecasting. It originally contains 259{,}013 records, of which 34{,}724 (13.4\%) lack a valid origin floor. Because floor numbers are discrete and semantically non-interpolable, we removed—but never imputed—these entries to avoid spatial bias. No records were filtered based on waiting time or call frequency; long waits during morning/evening peaks are retained as genuine indicators of system stress. The removed records show no clustering by hour or day of week, suggesting missingness is random (likely from transient sensor or transmission errors) rather than systematic underreporting. After cleaning, 224{,}289 calls remain (86.6\%), preserving demand heterogeneity across all operational conditions.
+
+The remaining files undergo analogous validation. In \texttt{car\_stops.csv} and \texttt{car\_calls.csv}, floor values are converted to consistent integers and invalid stops or actions discarded, ensuring trajectory integrity for mode inference. \texttt{load\_changes.csv} enforces the physical load bound [0, 2100] kg while retaining high-load events that reflect real passenger volumes. \texttt{maintenance\_mode.csv} is deduplicated to provide an accurate mask of offline periods, and \texttt{car\_departures.csv} is chronologically sorted to support precise departure tracking. Across all six files, retention rates range from 86.6\% to 100\%, confirming that cleaning targets only structurally invalid entries—not extreme but valid operational states.
+
+Collectively, the cleaned datasets are physically plausible, temporally coherent, and faithful to real-world elevator dynamics. Every cleaning decision is documented, deterministic, and grounded in domain knowledge—ensuring reproducibility and alignment with our modeling objectives~\cite{1583581}.
+% =========================================
+
+\subsection{Data Visualization}
+We conducted a comprehensive exploratory data analysis (EDA) to uncover temporal, directional, and spatial patterns in elevator usage. Seven key visualizations were generated, designed to answer: \textit{When, where, in which direction, and how intensely is the elevator service requested?}.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\linewidth]{figures/response_time_distribution.pdf}
+        \caption{Response time distribution}
+        \label{fig:resp_dist}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\linewidth]{figures/hourly_calls.pdf}
+        \caption{Hourly hall call volume}
+        \label{fig:hourly_calls}
+    \end{subfigure}
+    \caption{System responsiveness and overall temporal demand pattern.}
+    \label{fig:temporal_overview}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\linewidth]{figures/hourly_up_down.pdf}
+        \caption{Up vs. down calls by hour}
+        \label{fig:up_down}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\linewidth]{figures/elevator_usage_by_hour.pdf}
+        \caption{Average passenger weight entering per hour}
+        \label{fig:usage_weight}
+    \end{subfigure}
+    \caption{Directional traffic modes and load intensity validation.}
+    \label{fig:directional_load}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/hourly_calls_weekday_vs_weekend.pdf}
+    \caption{Weekday versus weekend call volume, showing structured office traffic on weekdays.}
+    \label{fig:weekday_weekend}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\linewidth]{figures/hall_calls_heatmap_weekday.pdf}
+        \caption{Weekday spatial-temporal heatmap}
+        \label{fig:heatmap_weekday}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=\linewidth]{figures/hall_calls_heatmap_weekend.pdf}
+        \caption{Weekend spatial-temporal heatmap}
+        \label{fig:heatmap_weekend}
+    \end{subfigure}
+    \caption{Spatial distribution of hall calls across floors and hours.}
+    \label{fig:spatial_heatmaps}
+\end{figure}
+The heatmaps (Figures~\ref{fig:heatmap_weekday} and \ref{fig:heatmap_weekend}) expose spatial heterogeneity. On weekdays, intense activity concentrates between Floors 1--3 (main lobby and exits) and Floors 10--14 (likely office zones), especially during 8--10 AM and 5--7 PM. In contrast, weekends show diffuse, low-intensity usage across all floors, confirming minimal structured traffic.
+
+
+
+\subsubsection{Insights from Visual Analysis}
+
+Based on the cleaned datasets, analyzed elevator demand along five key dimensions: time, direction, weekday cycle, spatial distribution, and passenger load. Together, these dimensions address the core question of when, where, and how intensively elevator services are requested.
+
+\t\textbf{System Performance Baseline:} The distribution of elevator response times (Figure~\ref{fig:resp_dist}) shows that more than 95\% of hall calls are served within 30 seconds. This indicates that the system is generally responsive under normal conditions. Consequently, the primary challenge is thus not mechanical insufficiency, but in \t\textbf{anticipating and managing demand surges during peak periods.}
+
+\t\textbf{Temporal and Directional Demand Patterns:} Hourly aggregation of hall calls (Figure~\ref{fig:hourly_calls}) reveals a clear bimodal daily pattern, with peaks around lunch (12:00) and evening commute (18:00), which is strongly driven by human activity schedules, making time-of-day a critical predictive feature.
+    \par When separated by direction (Figure~\ref{fig:up_down}), pronounced asymmetry emerges: upward traffic dominates morning, while downward traffic prevails in the late afternoon and evening. This confirms that modeling total demand alone is insufficient, and that \t\textbf{direction-aware prediction is essential} to accurate prediction and avoid inefficient dispatching.
+
+\t\textbf{Load-Based Validation of Demand Intensity:} To verify that high call volume peaks correspond to genuine congestion rather than spurious button presses, we examine average incoming passenger weight (Figure~\ref{fig:usage_weight}). The alignment between call volume peaks and increased passenger weight (e.g. 160 kg at 12:00) confirms that high-demand periods reflect genuine system load. Passenger weight thus serves as a reliable proxy for traffic intensity.
+
+\t\textbf{Weekday Regimes and Spatial Heterogeneity:} A strong contrast between weekdays and weekends is observed in Figure~\ref{fig:weekday_weekend}. Weekday demand exhibits higher needs and more structured peaks than weekend demand, reflecting the office-oriented nature of the building. This supports treating weekdays and weekends as ``distinct operational regimes''.
+    \par Spatial-temporal heatmaps (Figures~\ref{fig:heatmap_weekday} and~\ref{fig:heatmap_weekend}) further reveal floor-level heterogeneity. On weekdays, demand concentrates at 1--3 floors (lobby) and 10--14 floors (main office zones) during peak hours, while weekend usage is sparse and spatially diffuse. These patterns necessitate indicates elevator demand varies jointly across time and space, necessitating floor-aware strategies in both prediction and dynamic parking.
+
+Collectively, these visual analyses reveal five empirical regularities: (i) demand is highly time-dependent and non-stationary; (ii) traffic exhibits mode-specific directional asymmetry; (iii) call peaks correspond to real passenger congestion; (iv) weekday and weekend dynamics require separate treatment; and (v) demand varies significantly across floors. These insights form the foundation for our core methodological components—time-adaptive traffic prediction, real-time operational mode classification, and floor-aware dynamic parking—developed in the following sections.
+
+\subsection{Feature Engineering}
+
+From the cleaned datasets, we derived a minimal yet interpretable set of features aligned with elevator traffic dynamics:
+
+\begin{itemize}
+    \item \t\textbf{Temporal features:} Hour of day, day of week, and a binary weekday/weekend flag—capturing recurring human activity patterns (e.g., morning up-peak, evening down-peak).
+    \item \t\textbf{Directional indicators:} Call direction (up/down) from \texttt{hall\_calls.csv}, essential for modeling asymmetric traffic flows.
+    \item \t\textbf{Spatial identifiers:} Origin floor of each hall call, enabling floor-resolved demand estimation—the basis for targeted parking strategies.
+    \item \t\textbf{Traffic intensity proxies:} Aggregated load changes per time interval, serving as a continuous surrogate for passenger volume where direct counts are unavailable.
+\end{itemize}
+
+These four feature groups jointly encode \textit{when}, \textit{where}, and \textit{in which direction} demand arises—three fundamental axes for short-term prediction, operational mode classification, and dynamic parking decisions.
+
+\subsection{Exploratory Data Analysis}
+\label{subsec:eda}
+Exploratory data analysis (EDA) was conducted to uncover temporal, directional, and spatial patterns in elevator demand. All conclusions in this section are directly supported by the visualizations shown in Figures~\ref{fig:temporal_overview}--\ref{fig:spatial_heatmaps}.
+
+Figure~\ref{fig:temporal_overview} establishes a baseline of system responsiveness and overall demand patterns. Over 95\% of hall calls are served within 30 seconds, indicating that the system is generally efficient under normal conditions. The hourly call volume exhibits a clear bimodal pattern, with peaks around lunchtime and early evening, reflecting strong human activity rhythms.
+
+Directional analysis in Figure~\ref{fig:directional_load} reveals classic traffic regimes: a pronounced morning up-peak and an evening down-peak. The corresponding passenger load plot confirms that periods of high call volume align with high actual loading intensity, validating that these peaks represent genuine congestion rather than spurious requests.
+
+Figure~\ref{fig:weekday_weekend} highlights a stark contrast between weekdays and weekends. Weekday demand is structured and significantly higher, while weekend usage remains uniformly low, confirming the building’s office-oriented nature.
+
+Finally, the spatial-temporal heatmaps in Figure~\ref{fig:spatial_heatmaps} expose substantial floor-level heterogeneity. On weekdays, demand concentrates at lower lobby floors and mid-to-upper office floors during peak hours, whereas weekend usage is sparse and spatially diffuse.
+
+\subsection{Synthesis of Findings}
+These observations lead to five actionable insights:
+\begin{itemize}
+    \item Elevator demand is highly time-dependent and non-stationary.
+    \item Traffic exhibits distinct, mode-specific directional patterns (e.g., morning up-peak, evening down-peak).
+    \item High call volumes correspond to real passenger congestion, not spurious requests.
+    \item Weekday and weekend dynamics require separate modeling treatments.
+    \item Demand varies significantly across floors, necessitating spatially resolved strategies.
+\end{itemize}
+Collectively, these insights motivate our core methodological choices: time-adaptive forecasting, real-time mode classification, and floor-aware dynamic parking—all developed in the following sections.
+
+
+
+% =-==================================通义版本======================================
+\section{Modeling}\label{sec:modeling}
+\label{sec:modeling}
+
+We propose a deployable, data-driven elevator control pipeline that links forecasting, traffic-mode recognition, and proactive parking. The key design principle is to keep each module both operationally interpretable and computationally light enough for real-time use in legacy group control systems.
+
+
+\subsection{Overview and Modeling Philosophy}
+
+The problem requires a proactive elevator control policy that can (i) forecast near-term demand, (ii) recognize the current traffic regime, and (iii) reposition idle elevators to reduce passenger waiting. To satisfy these requirements with a transparent and deployable pipeline, we build a three-stage framework:
+\begin{enumerate}[label=(\roman*)]
+    \item \t\textbf{Task 1: Short-term demand forecasting} to predict the number of hall calls in the next 5-minute slice;
+    \item \t\textbf{Task 2: Traffic-mode discovery and online classification} to identify the current building usage regime (e.g., up-peak, down-peak, inter-floor);
+    \item \t\textbf{Task 3: Mode-aware dynamic parking} to choose parking floors for idle elevators by solving a weighted 1D $k$-median problem using the mode-conditioned floor-demand distribution.
+\end{enumerate}
+The outputs form a closed loop: the forecast and recognized mode determine the proactive parking targets, and the resulting performance is validated via a lightweight simulation against standard baselines.
+
+\subsubsection{Interpretable Baseline and Fallback Policy (Route B)}\label{subsec:baseline-fallback}
+To strengthen deployability and provide a transparent benchmarking reference, we also implement an \emph{interpretable baseline}
+pipeline that mirrors Tasks 1--3 with minimal training and explicit logic. This Route B policy serves two roles: (i) a strong
+sanity-check baseline for ablation and robustness discussions, and (ii) a deployment \emph{fail-safe} fallback when learned models
+become uncertain (e.g., missing data or out-of-distribution periods).
+
+\paragraph{Task 1: time-of-day baseline + regime AR(1).}
+Let $y_t$ denote hall-call volume in slice $t$ and let $\tau(t)$ denote the time-of-day index. We estimate a baseline profile
+$\mu(\tau)$ from historical averages. Residual dynamics are modeled by a regime-specific AR(1) on $e_t = y_t-\mu(\tau(t))$:
+\[
+\hat y_{t+1}=\mu(\tau(t+1)) + \phi_{r(t)}\,\bigl(y_t-\mu(\tau(t))\bigr),
+\]
+where $r(t)\in\{\text{weekday},\text{weekend}\}$ and $\phi_{r}$ is estimated separately for each regime. This model is fast,
+interpretable, and provides a conservative early-warning signal.
+
+\paragraph{Task 2: rule-based real-time traffic state classifier.}
+We compute a compact set of online features per slice, including total calls $C_t$, directional imbalance $r_t=(C^{\uparrow}_t-C^{\downarrow}_t)/(C_t+\epsilon)$,
+lobby dominance $p_{1,t}$ (share of calls originating at the lobby), and a dispersion proxy $H_t$ (entropy-like spread over floors).
+Traffic states $s_t$ are then assigned by transparent threshold rules (e.g., \emph{Up-Peak} if $C_t$ is high and $r_t$ is strongly positive).
+To avoid degenerate thresholds in sparse periods (e.g., a quantile yielding $\theta_1=0$), we use robust nonzero quantiles and a minimum threshold floor.
+
+\paragraph{Task 3: zone-based state-aware parking rule.}
+We partition floors into three operational zones $L=\{\text{Lobby},\text{Mid},\text{Upper}\}$ guided by the EDA heatmaps.
+Given $(s_t,\hat y_{t+1})$, the policy allocates the idle fleet across zones (e.g., more cars in \text{Lobby} during \emph{Up-Peak},
+more coverage in \text{Upper} during \emph{Down-Peak}) with simple rate-limited reposition triggers. While less optimal than the weighted
+$k$-median planner, this baseline is easy to audit and is well-suited as a fallback controller.
+
+\n\noindent\t\textbf{Simulation-based evaluation (Task 3).}
+We evaluate the full suite of parking policies---static baselines, the interpretable Route~B zone policy, and our mode-aware dynamic strategy---in Section~\r\ref{sec:results} using a unified evaluator and identical call streams. We also report windowed performance for peak and transition periods (Table~\r\ref{tab:task3-windows}).
+
+\subsection{Model 1: Short-Term Passenger Arrival Forecasting (Task 1)}\label{subsec:forecast}
+
+\subsubsection{Target and Time Discretization}
+We discretize time into uniform slices of length $\Delta=5$ minutes. Let $y_t$ denote the total number of passenger arrivals in slice $t$. Consistent with the available logs, we use the number of \emph{hall calls} in each slice as a demand proxy; this variable is directly observable and closely aligned with perceived service quality (waiting time).
+
+The forecasting task is a one-step-ahead regression:
+\begin{equation}
+\hat{y}_{t+1} = f_{\theta}(x_t),
+\end{equation}
+where $x_t$ is a feature vector constructed from historical demand and temporal context.
+
+\subsubsection{Feature Engineering}
+To capture both periodic regularity and short-term dependence, we design $x_t$ with four groups of real-time features:
+\begin{enumerate}[label=(\alph*)]
+    \item \t\textbf{Cyclical time features:} daily and weekly periodicity are encoded using sine/cosine transforms, e.g.,
+    $\sin(2\pi \cdot \text{minute\_of\_day}/1440)$ and $\cos(2\pi \cdot \text{minute\_of\_day}/1440)$, and similarly for the minute-of-week.
+    \item \t\textbf{Calendar indicators:} hour, minute, and a weekend flag.
+    \item \t\textbf{Lagged demand:} $\{y_{t-\ell}\}$ for several lags $\ell$ (e.g., 5--60 minutes) to capture short-term autocorrelation.
+    \item \t\textbf{Rolling statistics and trend:} rolling mean/standard deviation of recent slices and a 1-hour trend term $y_{t}-y_{t-12}$.
+\end{enumerate}
+All features are constructed without future information, ensuring the model can operate online.
+
+\subsubsection{Model Choice and Validation Protocol}
+We adopt a gradient-boosted decision tree regressor (GBDT) due to its ability to model nonlinear interactions among mixed feature types, while remaining robust to noise and irregular demand spikes\cite{gbdt_chen,friedman2001gbm}. The dataset is split \emph{chronologically} to avoid temporal leakage: the first portion is used for training and the remaining portion for testing. We report mean absolute error (MAE) and root mean squared error (RMSE) for interpretability and sensitivity to extreme deviations.
+
+\n\noindent\t\textbf{Benchmark (Route B).}
+To provide a transparent and deployable baseline, we implement a time-of-day baseline and a regime AR(1) correction.
+Table~\ref{tab:task1-routeb} reports that the AR(1)-corrected predictor improves one-step 5-minute demand forecasting
+over the pure time-of-day baseline in both MAE and RMSE.
+
+\input{project/outputs/latex_table_task1.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\linewidth]{project/outputs/fig/task1_pred_vs_true.pdf}
+    \caption{Observed vs.\ predicted 5-minute demand for a representative window.}
+    \label{fig:task1-pred}
+\end{figure}
+
+\input{project/outputs/tab/task1_metrics.tex}
+
+\subsubsection{Output to Downstream Control}
+The one-step-ahead demand forecast provides a quantitative early warning signal. While Task 3 primarily depends on the mode-conditioned floor distribution, the forecast helps determine whether aggressive repositioning is warranted (e.g., during predicted surge periods versus idle periods).
+
+\subsection{Model 2: Traffic Mode Discovery and Online Classification (Task 2)}
+
+\subsubsection{Mode Features with Operational Meaning}
+Passenger traffic regimes in buildings typically exhibit distinct signatures in intensity, directionality, and spatial concentration. We construct a feature vector for each 5-minute slice that is both informative and interpretable, including:
+\begin{itemize}
+    \item \t\textbf{Intensity:} hall-call count in the slice.
+    \item \t\textbf{Directionality:} up/down ratio from hall calls.
+    \item \t\textbf{Spatial dispersion:} floor entropy (higher entropy indicates dispersed origins).
+    \item \t\textbf{Inter-floor tendency:} proportion of car calls not involving the lobby (proxying inter-floor movement).
+    \item \t\textbf{Service pressure:} number of stops and departures.
+    \item \t\textbf{Load dynamics and maintenance:} net load change and maintenance ratio (if available).
+\end{itemize}
+To emulate real-time sensing, we smooth selected features using a short rolling window (e.g., 15 minutes), producing stable online signals for clustering and classification.
+
+\subsubsection{Unsupervised Clustering and Interpretability}
+Since no ground-truth labels for ``traffic modes'' are provided, we use KMeans clustering on standardized features,  a method widely adopted for traffic state classification in intelligent transportation systems\cite{ZHAO201992}. KMeans solves:
+\begin{equation}
+\min_{\{\mu_k\}} \sum_{t} \|x_t - \mu_{c(t)}\|^2,
+\end{equation}
+where $c(t)$ assigns slice $t$ to its nearest centroid. We choose a small number of clusters (e.g., $K=6$) to balance granularity and interpretability; cluster quality can be sanity-checked with a silhouette score and validated via downstream performance stability \cite{rousseeuw1987silhouette}. In our implementation, we set $K=6$ to capture common micro-regimes while maintaining interpretability; the resulting silhouette score (approximately 0.34) indicates moderate separation, which is expected because traffic regimes overlap in practice.
+
+\subsubsection{Cluster-to-Mode Naming}
+To satisfy MCM's requirement of explainable managerial recommendations, we convert numerical clusters into operational mode labels by inspecting each cluster's feature profile (mean intensity, up/down ratio, entropy, and inter-floor ratio). For example, a high-intensity cluster with dominant up direction is labeled as \emph{Up-Peak}, while a low-intensity cluster is labeled as \emph{Idle/Low}. This hybrid approach is data-driven in discovery yet transparent in interpretation.
+
+\input{project/outputs/tab/task2_cluster_profile.tex}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\linewidth]{project/outputs/fig/task2_mode_heatmap.pdf}
+    \caption{Mode frequency by hour-of-day, highlighting daily regime shifts.}
+    \label{fig:task2-heatmap}
+\end{figure}
+
+\subsubsection{Online Mode Classification}\label{subsec:classify}
+In deployment, each new 5-minute slice is mapped to a feature vector, standardized using the training scaler, and assigned to the nearest KMeans centroid. The output mode $m_t$ is then passed to the dynamic parking optimizer in Task 3.
+
+\subsection{Model 3: Mode-Aware Dynamic Parking via Weighted $k$-Median (Task 3)}\label{subsec:strategy}
+
+\subsubsection{Mode-Conditioned Floor Demand Distribution}
+Let $F$ be the set of floors. For each traffic mode $m$, we estimate a mode-conditioned floor demand distribution from historical hall calls:
+\begin{equation}
+w_f(m) \propto \mathbb{E}[\text{\# hall calls from floor } f \mid \text{mode}=m], \quad f \in F,
+\end{equation}
+followed by normalization so that $\sum_{f \in F} w_f(m)=1$. This distribution acts as a probabilistic prior indicating where future calls are most likely to originate under the current regime.
+
+\subsubsection{Optimization Formulation (Weighted 1D $k$-Median)}
+At each decision epoch, suppose there are $k$ idle elevators available for repositioning. We choose a set of parking floors $P=\{p_1,\dots,p_k\}$ to minimize the demand-weighted distance from each floor to its nearest parked elevator:
+\begin{equation}
+\min_{P,\ |P|=k} \sum_{f \in F} w_f(m_t) \min_{p \in P} |f-p|.
+\label{eq:kmedian}
+\end{equation}
+Because floors lie on a 1D line and $|f-p|$ captures the dominant travel component, this objective directly targets reduced expected response distance (and thus waiting time), consistent with the weighted facility location approach for elevator group control\cite{hakimi1964median,daskin2013networklocation}.
+
+\subsubsection{Solution and Assignment}
+For typical buildings (tens of floors), the weighted 1D $k$-median can be solved efficiently via dynamic programming in $O(k|F|^2)$ per decision epoch. After computing target parking floors, we assign each idle elevator to a target floor based on proximity (a greedy nearest assignment suffices in our setting to reduce empty travel).
+
+\subsubsection{Execution Policy}
+We implement the policy with two practical constraints:
+\begin{itemize}
+    \item \t\textbf{Periodic decisions:} recompute parking targets every 5 minutes.
+    \item \t\textbf{Non-interference:} only \emph{idle} elevators are repositioned; elevators in service are not disrupted.
+\end{itemize}
+This makes the strategy deployable as a software-layer enhancement to standard group control.
+
+\begin{algorithm}[htbp]
+\caption{Mode-Aware Dynamic Parking Policy}
+\label{alg:dynamic-parking}
+\begin{algorithmic}[1]
+\Require Current time slice $t$, recognized mode $m_t$, idle elevator set $\mathcal{E}_{\text{idle}}$ with $k=|\mathcal{E}_{\text{idle}}|$, floor weights $\{w_f(m_t)\}_{f\in F}$
+\Ensure Target floor for each idle elevator
+\State Solve weighted 1D $k$-median in Eq.~\eqref{eq:kmedian} to obtain parking floors $P=\{p_1,\dots,p_k\}$
+\State Assign each $e\in \mathcal{E}_{\text{idle}}$ to a floor in $P$ by nearest-distance matching
+\State Command each idle elevator to reposition to its assigned floor (if not already there)
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Simulation-Based Evaluation (Baselines and Metrics)}
+
+\subsubsection{Baselines}
+To quantify the benefit of proactive parking, we compare:
+\begin{itemize}
+    \item \t\textbf{Last-stop:} idle elevators remain at their current floors.
+    \item \t\textbf{Lobby-return:} all idle elevators are sent to the lobby floor.
+    \item \t\textbf{Dynamic (ours):} Algorithm~\ref{alg:dynamic-parking} using mode-aware weighted $k$-median.
+\end{itemize}
+
+\subsubsection{Metrics}
+We report (i) average waiting time (AWT), defined as the elapsed time from a hall call until the first elevator arrival, and
+(ii) the fraction of ``long waits'' exceeding a configurable threshold (in our reported tables, a relative threshold equal to the lobby-baseline P95 within each evaluated subset). Because our evaluation is simulation-based, reported times are
+\emph{simulated time} under the assumed travel and door parameters. We therefore interpret AWT and long-wait rates primarily in a
+\emph{comparative} sense across strategies; the absolute values should be treated as scenario-dependent and recalibrated when the
+building's true kinematics are known.
+To capture both typical service quality and tail risk, we report the average waiting time (AWT), the 95th-percentile waiting time (P95), and the long-wait rate for each parking policy.
+\input{project/outputs/latex_table_task3.tex}
+
+\vspace{-0.5em}
+
+\n\noindent\textit{Note: In Table~\ref{tab:task3-strategy}, AWT and the 95th-percentile waiting time (P95) are reported in simulation time units (seconds under our parameterization). ``Long wait'' is defined relative to a configurable threshold; we report it primarily to compare tail risk across strategies. Absolute values should be re-calibrated when building-specific kinematics are known\cite{cibse2020guided,barney2015elevatortraffic}.}
+
+\subsubsection{Discussion}
+Across baselines, the dynamic mode-aware policy reduces both AWT and long-wait events by proactively placing idle elevators near likely call origins, especially during transitional periods where static parking rules are suboptimal.
+
+\subsection{Robustness and Sensitivity (Brief)}
+We test stability with respect to (i) the number of clusters $K$ (mode granularity), and (ii) decision frequency (e.g., 5 vs.\ 10 minutes). The relative advantage of the dynamic strategy remains consistent, indicating that performance gains arise from the core structure (mode conditioning + demand-weighted facility location), rather than fragile parameter tuning.
+
+
+
+
+
+
+\section{Result Analysis and Robustness Testing}\label{sec:results}
+
+\subsection{Performance Evaluation}
+
+\paragraph{Important note on units.}
+Our evaluation is performed in a \emph{comparative simulation} built from the provided logs. Reported waiting-time metrics are therefore best interpreted as \emph{simulation-time units} induced by the assumed travel/door parameters. The primary decision question in this study is the \emph{relative ordering and consistency} across parking strategies; absolute magnitudes can be re-scaled once building-specific timing parameters are calibrated in deployment.
+
+\paragraph{Task 1 (Forecasting).}
+Figure~\ref{fig:task1-pred} shows that the one-step-ahead model tracks short-term fluctuations of hall-call arrivals at 5-minute resolution.
+Table~\ref{tab:task1-metrics} reports MAE and RMSE on a chronological split, supporting the forecast as an actionable early-warning signal for upcoming surges and regime transitions.
+
+\paragraph{Task 2 (Mode discovery and online classification).}
+Table~\ref{tab:task2-cluster-profile} summarizes cluster feature profiles, which we translate into manager-friendly traffic modes (e.g., \emph{Idle/Low}, \emph{Up-Peak}, \emph{Down-Peak}, \emph{Inter-floor}).
+Figure~\ref{fig:task2-heatmap} demonstrates clear time-of-day regularity, indicating that the discovered modes correspond to stable building usage patterns rather than random noise.
+Because mode boundaries can overlap in real operations, we do not expect perfect cluster separation; instead, we prioritize interpretability and downstream control stability.
+
+\paragraph{Task 3 (Mode-aware dynamic parking).}
+Table~\ref{tab:task3-strategy} compares parking policies including two static baselines (last-stop, lobby-return), the interpretable Route~B zone policy, and our dynamic mode-aware policy.
+Across the same call stream, the dynamic policy improves service consistency by positioning idle elevators closer to likely call origins under the current regime, thereby reducing expected response distance and lowering the frequency of extreme waits.
+The benefit is most pronounced during peak periods and short transitions (e.g., pre-peak buildup) where static rules either over-concentrate cars at the lobby or fail to cover dispersed demand.
+
+
+
+\paragraph{Interpretable baseline benchmark and deployment fallback.}
+Beyond static baselines, we implement the interpretable Route B policy in Section~\ref{subsec:baseline-fallback} as an additional
+end-to-end reference. Its forecasting and state rules are fully transparent, enabling quick diagnosis when performance shifts.
+In deployment, it also supports a low-risk rollback: if mode classification confidence degrades or key signals are missing, the controller
+can revert to Route B without interrupting in-service elevators. Due to page limits, we focus the main tables on the two standard static
+baselines; Route B details and implementation notes are provided in Appendix~\ref{app:routeb}.
+
+\subsection{Robustness and Sensitivity}
+
+We verify that performance improvements are not due to fragile tuning by varying key design parameters:
+\begin{itemize}[leftmargin=1.2em,itemsep=0.25em,topsep=0.25em]
+  \item \t\textbf{Number of clusters $K$.} Varying $K$ in a small range (e.g., $4$--$8$) preserves the daily mode structure and does not change the qualitative strategy ordering, indicating that the parking optimizer is not overly sensitive to mode granularity.
+  \item \t\textbf{Decision frequency.} Recomputing targets every 5 minutes versus less frequent updates (e.g., 10 minutes) yields a smooth trade-off: less frequent updates reduce empty repositioning but react more slowly to regime transitions. This supports deployability because operators can choose a frequency consistent with wear-and-tear constraints.
+  \item \t\textbf{Feature smoothing window.} Using 10--20 minute rolling windows stabilizes online classification. Dominant regimes remain stable, while borderline slices may shift between similar clusters; because repositioning applies only to idle elevators, these boundary fluctuations have limited operational impact.
+  \item \t\textbf{Timing-parameter perturbation.} Scaling travel/door parameters within a reasonable band (e.g., $\pm 20\%$) preserves the relative comparisons across strategies, reinforcing that conclusions are structural rather than tied to a single calibration.
+\end{itemize}
+
+Overall, the pipeline’s gains arise from its architecture (mode conditioning + demand-weighted facility location) rather than from narrowly tuned hyperparameters.
+
+
+
+\section{Memo to Management}\label{sec:memo}
+
+\begin{quote}
+\n\noindent
+\t\textbf{To:} Building Management Team and Elevator Maintenance Contractor \\
+\t\textbf{From:} Team M2026232 \\
+\t\textbf{Date:} January 19, 2026 \\
+\t\textbf{Subject:} Deployable Mode-Aware Parking Policy to Improve Elevator Service Consistency
+
+\vspace{0.8em}
+\t\textbf{Executive recommendation.}
+We recommend deploying a \emph{mode-aware idle-elevator parking policy} that uses only existing control logs to (i) forecast near-term demand, (ii) infer the current traffic regime, and (iii) proactively reposition \emph{idle} elevators to floors that minimize demand-weighted response distance. The policy is designed as a supervisory layer and does not interrupt elevators currently serving passengers.
+
+\vspace{0.6em}
+\t\textbf{Why change the current rule.}
+Static parking rules (e.g., always returning idle cars to the lobby) are reliable but systematically mismatched to non-lobby demand (inter-floor traffic) and regime transitions. Our model identifies recurring regimes and learns where calls typically originate in each regime; parking is then optimized accordingly.
+
+\vspace{0.6em}
+\t\textbf{Implementation plan (low risk).}
+\begin{itemize}[leftmargin=1.2em,itemsep=0.25em,topsep=0.25em]
+  \item \t\textbf{Week 1 (offline calibration):} Calibrate travel/door timing parameters from logs; validate that the simulator reproduces observed response distributions at a coarse level.
+  \item \t\textbf{Week 2 (shadow mode):} Run the policy in ``advisory'' mode (no actuation) to log suggested parking targets and estimate expected improvements.
+  \item \t\textbf{Week 3 (pilot actuation):} Enable actuation for idle cars only during selected hours (e.g., morning and evening peaks); keep a one-click rollback to the current static rule.
+  \item \t\textbf{Week 4 (scale-out):} Expand to full-day operation if KPIs improve and operational constraints are met.
+\end{itemize}
+
+\vspace{0.6em}
+\t\textbf{KPIs and monitoring.}
+Track two service KPIs on a daily dashboard: (i) average waiting time and (ii) long-wait frequency (e.g., waits exceeding a management-defined threshold). We emphasize \emph{relative} improvements across policies; absolute magnitudes depend on calibrated timing parameters. Also monitor \emph{empty travel} (repositioning distance) to control wear-and-tear.
+
+\vspace{0.6em}
+\t\textbf{Operational safeguards.}
+\begin{itemize}[leftmargin=1.2em,itemsep=0.25em,topsep=0.25em]
+  \item \t\textbf{Non-interference:} only idle elevators are repositioned.
+  \item \t\textbf{Rate limiting:} enforce a minimum interval between reposition commands per car.
+  \item \t\textbf{Fail-safe:} if mode classification becomes uncertain (e.g., missing data), fall back to the current static rule.
+\end{itemize}
+
+\vspace{0.6em}
+\t\textbf{Rollback.}
+Rollback is immediate: disable the parking module and return to the baseline rule. No hardware changes are required.
+\end{quote}
+
+
+\section{Conclusion}
+
+We developed a practical, closed-loop elevator control pipeline that connects \emph{prediction}, \emph{traffic-mode recognition},
+and \emph{proactive parking} using only standard event logs. The key contributions are:
+
+\begin{itemize}
+    \item A 5-minute, one-step-ahead demand forecasting model with online-safe features (lags, rolling statistics, and cyclical time encodings).
+    \item An unsupervised traffic-mode discovery method that produces interpretable operational regimes and enables real-time classification.
+    \item A mode-aware dynamic parking policy formulated as a weighted 1D $k$-median problem, yielding efficient and explainable parking targets.
+\end{itemize}
+
+Our validation shows that the pipeline captures recurring daily regime structure and provides a deployable control rule that remains stable
+under reasonable parameter perturbations. Future work includes integrating destination information from car calls, extending the simulator with
+door times and capacity constraints calibrated to manufacturer specifications, and evaluating stress-test scenarios to quantify benefits under heavier
+demand.
+
+% ====================================================
+\bibliographystyle{IEEEtran}
+\bibliography{myref}
+% ====================================================
+
+\appendix
+\section{Appendix: Data, Algorithms, and Reproducibility}\label{app:all}
+
+% -------------------------
+\subsection{Appendix A. Data Dictionary and Preprocessing Details}\label{app:data}
+This appendix documents the cleaned datasets used by our pipeline. Our preprocessing removes records lacking essential spatial metadata (e.g., missing origin floor) and aggregates event streams into 5-minute slices for consistent modeling and control.
+
+\begin{table}[htbp]
+\centering
+\caption{Cleaned datasets and key fields used by our pipeline. (All files are saved under \texttt{data\_cleaning/} in UTF-8.)}
+\label{tab:data-dict}
+\begin{tabular}{lll}
+\toprule
+File & Key fields & Notes \\
+\midrule
+\texttt{hall\_calls\_clean.csv} &
+\texttt{Time}, \texttt{Floor}, \texttt{Direction} &
+Hall-call events; multi-floor entries (e.g., ``4,5'') are expanded into multiple rows; invalid/missing floors removed. \\
+\texttt{car\_stops\_clean.csv} &
+\texttt{Time}, \texttt{Elevator ID}, \texttt{Floor}, \texttt{Direction} &
+Car stop events; stop reasons are retained when available (Hall/Car/Idle). \\
+\texttt{car\_departures\_clean.csv} &
+\texttt{Time}, \texttt{Elevator ID}, \texttt{Floor} &
+Car departure events (if provided in the raw data). \\
+\texttt{load\_changes\_clean.csv} &
+\texttt{Time}, \texttt{Car ID}, \texttt{Floor}, \texttt{Load In}, \texttt{Load Out} &
+Load in/out per stop; extreme values filtered to remove corrupt records. \\
+\texttt{maintenance\_mode\_clean.csv} &
+\texttt{Time}, \texttt{Elevator ID}, \texttt{Maintenance Mode} &
+Maintenance status per elevator over time; duplicates removed and records time-sorted. \\
+\texttt{car\_calls\_clean.csv} &
+\texttt{Time}, \texttt{Car ID}, \texttt{Floor}, \texttt{Action} &
+Car-call register/cancel events; other actions are filtered out. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\n\noindent\t\textbf{Aggregation.} We align all streams on 5-minute slice boundaries using floor/ceil operations and compute rolling-window features (see Appendix~\ref{app:features}).
+
+% -------------------------
+\subsection{Appendix B. Feature Engineering (Task 1 \& Task 2)}\label{app:features}
+\n\noindent\t\textbf{Task 1 (Forecasting) features.} We predict next-slice hall-call volume using:
+(i) temporal encodings (hour-of-day, day-of-week, cyclic sin/cos),
+(ii) lagged demand ($y_{t}, y_{t-1}, \ldots$),
+(iii) rolling statistics (mean/variance over recent windows),
+and (iv) optional exogenous indicators (maintenance, load).
+
+\n\noindent\t\textbf{Task 2 (Mode discovery) features.} For each 5-minute slice, we compute a compact feature vector capturing:
+\begin{itemize}[leftmargin=*]
+\item \textit{Intensity:} call volume (and rolling-smoothed intensity).
+\item \textit{Directionality:} up/down ratio or imbalance.
+\item \textit{Dispersion:} entropy-like spread across floors (if used).
+\item \textit{Inter-floor tendency:} proxy for non-lobby traffic (if used).
+\item \textit{Service pressure:} stop counts, departure counts, load-change activity.
+\end{itemize}
+These features are standardized before clustering.
+
+% -------------------------
+\subsection{Appendix C. Mode Clustering Configuration and Naming}\label{app:clustering}
+We apply $k$-means clustering to standardized slice-level features and select $K=6$ as a practical trade-off between interpretability and stability. The resulting silhouette score is moderate, which is expected because real building traffic modes overlap in time and characteristics.
+
+\n\noindent\t\textbf{Labeling rule.} We map each cluster to an interpretable mode label (e.g., Up-Peak, Down-Peak, Idle/Low, Inter-floor, Mixed/Dispersed) using cluster-average thresholds on intensity and directionality (Table~\ref{tab:task2-cluster-profile} in the main text provides the supporting statistics).
+
+% -------------------------
+\subsection{Appendix D. Weighted 1D $k$-Median Solution Sketch}\label{app:kmedian}
+Given mode-conditioned floor weights $\{w_f(m)\}$, we place $k$ idle elevators to minimize expected repositioning distance:
+\[
+\min_{s_1,\dots,s_k}\sum_{f} w_f(m)\min_{j\in\{1,\dots,k\}}|f-s_j|.
+\]
+On a 1D ordered set of floors, the cost of serving an interval $[i, j]$ by one car is minimized at the (weighted) median floor. Let $\text{cost}(i,j)$ be that minimum interval cost.
+
+Define DP:
+\[
+dp[j][p] = \min_{i\le j}\left(dp[i-1][p-1]+\text{cost}(i,j)\right),
+\]
+with base case $dp[j][1]=\text{cost}(1,j)$. This yields $O(kF^2)$ time with $F$ floors, which is inexpensive for typical building sizes.
+
+% -------------------------
+\subsection{Appendix E. Simulation Assumptions and Parameters}\label{app:sim}
+Our simulator is designed primarily as a \textit{comparative evaluator} among strategies. Therefore, we report performance in simulation time units and emphasize relative improvements. Absolute values can be re-calibrated to a specific building by setting travel/door parameters.
+
+\begin{table}[htbp]
+\centering
+\caption{Simulation parameters used in our lightweight evaluator. We report results in simulation seconds and emphasize relative comparisons across strategies.}
+\label{tab:sim-params}
+\begin{tabular}{lll}
+\toprule
+Parameter & Value & Meaning \\
+\midrule
+$\Delta t$ & 5 min & parking decision interval \\
+$v$ & 1.5 s/floor & travel time per floor (simulation seconds) \\
+$\tau_d$ & 8.0 s & door open/close service time (simulation seconds) \\
+$T_{\text{long}}$ & 60 s & long-wait threshold (simulation seconds) \\
+$K$ & 6 & number of traffic modes (clusters) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\n\noindent\t\textbf{Dispatch heuristic.} Hall calls are assigned by an estimated-time-to-serve rule (earliest arrival / least additional delay), subject to car capacity and maintenance availability (if modeled).
+
+% -------------------------
+\subsection{Appendix F. Additional Results (Stress Tests)}\label{app:extra}
+To assess robustness beyond the nominal setting, we perform three stress tests: (i) demand scaling ($\times 1.2$ and $\times 1.5$), (ii) a mode-shift shock that injects a short burst of concentrated lobby calls during an otherwise low-demand period, and (iii) a parameter perturbation that increases both per-floor travel time and door time by $20\%$. We report tail-aware metrics (AWT, P95, and long-wait rate) to quantify both typical performance and worst-case risk.
+
+\input{project/outputs/tab/appendixF_stress.tex}
+
+\vspace{-0.25em}
+\n\noindent\textit{Interpretation: the dynamic policy should retain its advantage or degrade gracefully under stress; if rankings flip, this indicates sensitivity that must be addressed before deployment.}
+
+
+% -------------------------
+% -------------------------
+\subsection{Appendix G. Reproducibility Checklist}\label{app:repro}
+From the project root directory:
+\begin{enumerate}[leftmargin=*]
+\item Run \texttt{data\_processing\_code.ipynb} to generate cleaned CSV files under \texttt{data\_cleaning/}.
+\item Run \texttt{modeling\_code\_patched\_v2.ipynb} to export modeling artifacts under \texttt{outputs/data/}.
+\item Run \texttt{python scripts/make\_all\_materials.py} to generate \texttt{outputs/fig/} and \texttt{outputs/tab/}.
+\item Compile \texttt{problem\_b\_report.tex} (from the project root) to obtain the final PDF.
+\end{enumerate}
+We keep all figures and tables as generated artifacts to ensure the manuscript is fully reproducible.
+
+
+\subsection{Appendix H. Interpretable Baseline and Fallback Policy (Route B)}\label{app:routeb}
+This appendix summarizes the interpretable Route B pipeline used for benchmarking and as a deployment fallback.
+
+\paragraph{Task 1: baseline + regime AR(1) predictor.}
+We estimate a time-of-day baseline $\mu(\tau)$ from historical averages over 5-minute slices. Let $e_t=y_t-\mu(\tau(t))$ be the residual.
+We fit separate AR(1) coefficients $\phi_{\text{wd}}$ and $\phi_{\text{we}}$ for weekday/weekend:
+\[
+e_{t+1}=\phi_{r(t)}e_t+\eta_t,\qquad r(t)\in\{\text{weekday},\text{weekend}\},
+\]
+yielding $\hat y_{t+1}=\mu(\tau(t+1))+\phi_{r(t)}(y_t-\mu(\tau(t)))$. This provides a fast, interpretable forecast that can be computed online.
+
+\paragraph{Task 2: rule-based traffic state classifier with robust thresholds.}
+The classifier uses slice-level features $(C_t,C_t^{\uparrow},C_t^{\downarrow},r_t,p_{1,t},H_t)$ and assigns states via threshold rules.
+Thresholds are set from empirical quantiles but made robust to sparsity: if a low quantile returns $\theta=0$ (common in night-time data),
+we instead use a nonzero-quantile or apply a minimum floor $\theta\leftarrow\max(\theta,\theta_{\min})$. We also use inclusive comparisons
+(e.g., $C_t\le\theta_1$) to ensure \emph{Idle/Night} states remain reachable.
+
+\paragraph{Task 3: zone-based parking allocation.}
+Floors are partitioned into $L=\{\text{Lobby},\text{Mid},\text{Upper}\}$. Given state $s_t$ and forecast $\hat y_{t+1}$, the policy chooses
+how many idle elevators to hold in each zone and triggers repositioning only when (i) a car is idle, (ii) the target-zone count is not met,
+and (iii) a rate-limit timer permits movement. This rule is simple to audit and provides a safe fallback when data-driven models are uncertain.
+
+
+\subsection{validation}
+% --- Task 1 Benchmark by State (Appendix) ---
+\input{project/outputs/latex_table_task1_by_state.tex}
+
+\n\noindent
+Windowed evaluation isolates operationally critical conditions---peak periods, regime-transition windows,
+and high-load intervals. Compared to aggregated metrics, these windows more clearly reveal the benefit of proactive
+parking while also exposing its repositioning cost (empty travel), which is reported alongside waiting-time statistics.
+
+% --- Task 3 Windows Table (Appendix) ---
+\input{project/outputs/latex_table_task3_windows.tex}
+
+
+
+\section{AI Tools Used}
+\begin{table}[h]
+\centering
+\caption{AI Tool Usage Summary}
+\begin{tabular}{p{3cm}p{3cm}p{6cm}}
+    \hline
+    \t\textbf{AI Tool} & \t\textbf{Version/Model} & \t\textbf{Primary Purpose} \\
+    \hline
+    OpenAI ChatGPT & GPT-4.5 & Brainstorming model architecture, verifying mathematical formulations \\
+    Anthropic Claude & Claude 3.5 Sonnet & Refining technical writing, ensuring logical flow in Modeling section \\
+    DeepSeek & Latest version & Generating initial data preprocessing code for feature engineering \\  
+    \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Query/Response Record}
+\t\textbf{ChatGPT Query 1:}
+
+\textit{"Explain the mathematical formulation for directional asymmetry in elevator traffic classification, with a concrete example."}
+
+\t\textbf{Output:}
+
+\textit{"Directional Asymmetry = UpCalls / (UpCalls + DownCalls). Example: If 60 calls go up and 20 down, $\text{asymmetry} = 60/(60+20) = 0.75$."}
+
+\t\textbf{Purpose:} Verified the core formula for Traffic State Classification (Section \ref{subsec:classify}).
+
+\t\textbf{Claude Query 1:}
+
+\textit{"How to structure a discrete-event simulation for elevator parking strategy validation in Python, with key metrics?"}
+
+\t\textbf{Output:}
+
+\textit{"Use simpy for event scheduling. Track: AWT, elevator movement distance, idle time. Key metrics: \% reduction vs. baselines."}
+
+\t\textbf{Purpose:} Generated simulation framework (Section \ref{subsec:strategy} validation).
+
+\t\textbf{DeepSeek Query 1:}
+
+\textit{"Write a Python function to compute rolling statistics (mean/std) for time-series elevator data over 15-minute windows."}
+
+\t\textbf{Output:}
+
+\begin{lstlisting}[language=Python]
+def rolling_stats(df, window=3):
+    return df.rolling(window).agg(['mean', 'std'])
+\end{lstlisting}
+
+\t\textbf{Purpose:} Provided initial code for feature engineering (Section \ref{subsec:forecast}).
+
+\subsection*{Human Contribution Declaration}
+We affirm that:
+
+All final modeling decisions (e.g., GBDT for forecasting, K-Means clustering) were made by team members after critical evaluation.
+All mathematical formulations (e.g., directional asymmetry, clustering objective) were manually verified against domain knowledge.
+All code was reviewed, executed, and validated against real elevator logs.
+AI was used exclusively for:
+Initial brainstorming of technical approaches
+Code snippet generation (with full manual review)
+Language polishing for clarity
+The final solution represents our original work and understanding of elevator traffic dynamics.
+\begin{flushright}
+(Date: January 19, 2026)
+\end{flushright}
+
+\end{document}

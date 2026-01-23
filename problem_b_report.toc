@@ -1,0 +1,72 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Problem Decomposition and Analysis}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Objective and decision scope}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Data-driven closed loop: three tasks}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Key modeling assumptions (made explicit)}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Outputs and validation plan}{3}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Two-route design: performance vs.\ interpretability}{3}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Data Processing and Analysis}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Data Cleaning Principles and Validation}{3}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Cleaning Principles}{3}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Data Cleaning Operations}{4}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Data Cleaning outcomes and Validation}{4}{subsubsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.2}Data Visualization}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Empirical Findings from EDA}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Feature Engineering}{7}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Synthesis of Findings}{7}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Modeling}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Overview and Modeling Philosophy}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Model 1: Short-Term Passenger Arrival Forecasting (Task 1)}{8}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Target and Time Discretization}{8}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Feature Engineering}{8}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Model Choice and Validation Protocol}{8}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Output to Downstream Control}{9}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}Model 2: Traffic Mode Discovery and Online Classification (Task 2)}{9}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Mode Features with Operational Meaning}{9}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Unsupervised Clustering and Interpretability}{9}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Cluster-to-Mode Naming}{10}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}Online Mode Classification}{10}{subsubsection.4.3.4}%
+\contentsline {subsection}{\numberline {4.4}Model 3: Mode-Aware Dynamic Parking via Weighted $k$-Median (Task 3)}{10}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Mode-Conditioned Floor Demand Distribution}{10}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Optimization Formulation (Weighted 1D $k$-Median)}{11}{subsubsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.3}Solution and Assignment}{11}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}Execution Policy}{11}{subsubsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.5}Interpretable Baseline and Fallback Policy (Route B)}{11}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Task 1: time-of-day baseline + regime AR(1).}{11}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Task 2: Rule-based real-time traffic state classification Model.}{11}{subsubsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}Task 3: zone-based state-aware parking rule.}{12}{subsubsection.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.4}Deployment Fallback: When to Switch from Route A to Route B}{12}{subsubsection.4.5.4}%
+\contentsline {subsection}{\numberline {4.6}Simulation-Based Evaluation (Baselines and Metrics)}{12}{subsection.4.6}%
+\contentsline {subsubsection}{\numberline {4.6.1}Baselines}{12}{subsubsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.2}Metrics}{12}{subsubsection.4.6.2}%
+\contentsline {subsubsection}{\numberline {4.6.3}Discussion}{13}{subsubsection.4.6.3}%
+\contentsline {subsection}{\numberline {4.7}Robustness and Sensitivity (Brief)}{13}{subsection.4.7}%
+\contentsline {section}{\numberline {5}Result Analysis and Robustness Testing}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Performance Evaluation}{13}{subsection.5.1}%
+\contentsline {paragraph}{Important note on units.}{13}{paragraph*.12}%
+\contentsline {paragraph}{Simulator consistency and calibration.}{13}{paragraph*.13}%
+\contentsline {paragraph}{Task 1 (Forecasting).}{13}{paragraph*.14}%
+\contentsline {paragraph}{Task 2 (Mode discovery and online classification).}{13}{paragraph*.15}%
+\contentsline {paragraph}{Task 3 (Mode-aware dynamic parking).}{14}{paragraph*.16}%
+\contentsline {paragraph}{Interpretable baseline benchmark and deployment fallback.}{14}{paragraph*.17}%
+\contentsline {subsection}{\numberline {5.2}Stress Tests and Robustness}{14}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Robustness and Sensitivity}{14}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Memo to Management}{15}{section.6}%
+\contentsline {section}{\numberline {7}Conclusion}{15}{section.7}%
+\contentsline {section}{\numberline {A}Appendix: Data, Algorithms, and Reproducibility}{16}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Appendix A. Data Dictionary and Preprocessing Details}{16}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Appendix B. Feature Engineering (Task 1 \& Task 2)}{17}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}Appendix C. Mode Clustering Configuration and Naming}{17}{subsection.A.3}%
+\contentsline {subsection}{\numberline {A.4}Appendix D. Weighted 1D $k$-Median Solution Sketch}{17}{subsection.A.4}%
+\contentsline {subsection}{\numberline {A.5}Appendix E. Simulation Assumptions and Parameters}{17}{subsection.A.5}%
+\contentsline {subsection}{\numberline {A.6}Appendix F. Additional Results (Stress Tests)}{17}{subsection.A.6}%
+\contentsline {subsection}{\numberline {A.7}Appendix G. Reproducibility Checklist}{18}{subsection.A.7}%
+\contentsline {subsection}{\numberline {A.8}Appendix H. Interpretable Baseline and Fallback Policy (Route B)}{18}{subsection.A.8}%
+\contentsline {paragraph}{Task 1: baseline + regime AR(1) predictor.}{18}{paragraph*.21}%
+\contentsline {paragraph}{Task 2: rule-based traffic state classifier with robust thresholds.}{18}{paragraph*.22}%
+\contentsline {paragraph}{Task 3: zone-based parking allocation.}{19}{paragraph*.23}%
+\contentsline {subsection}{\numberline {A.9}Validation}{19}{subsection.A.9}%
+\contentsline {paragraph}{Language and Writing Support}{}{paragraph*.28}%
+\contentsline {paragraph}{Code Drafting Assistance}{}{paragraph*.29}%
+\contentsline {paragraph}{Explicitly Excluded Uses of AI}{}{paragraph*.30}%
+\contentsline {paragraph}{Verification and Responsibility}{}{paragraph*.31}%

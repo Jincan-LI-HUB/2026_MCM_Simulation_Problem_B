@@ -1,0 +1,181 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{macqueen1967kmeans}
+\citation{cibse2020guided,strakosch2010vertical,barney2015elevatortraffic}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Problem Decomposition and Analysis}{2}{section.2}\protected@file@percent }
+\newlabel{sec:problem}{{2}{2}{Problem Decomposition and Analysis}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Objective and decision scope}{2}{subsection.2.1}\protected@file@percent }
+\newlabel{subsec:objective}{{2.1}{2}{Objective and decision scope}{subsection.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Data-driven closed loop: three tasks}{2}{subsection.2.2}\protected@file@percent }
+\newlabel{subsec:three-tasks}{{2.2}{2}{Data-driven closed loop: three tasks}{subsection.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Key modeling assumptions (made explicit)}{3}{subsection.2.3}\protected@file@percent }
+\newlabel{subsec:assumptions}{{2.3}{3}{Key modeling assumptions (made explicit)}{subsection.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Outputs and validation plan}{3}{subsection.2.4}\protected@file@percent }
+\newlabel{subsec:validation-plan}{{2.4}{3}{Outputs and validation plan}{subsection.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Two-route design: performance vs.\ interpretability}{3}{subsection.2.5}\protected@file@percent }
+\newlabel{subsec:two-routes}{{2.5}{3}{Two-route design: performance vs.\ interpretability}{subsection.2.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Data Processing and Analysis}{3}{section.3}\protected@file@percent }
+\newlabel{sec:data}{{3}{3}{Data Processing and Analysis}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Data Cleaning Principles and Validation}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Cleaning Principles}{3}{subsubsection.3.1.1}\protected@file@percent }
+\citation{1583581}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Data Cleaning Operations}{4}{subsubsection.3.1.2}\protected@file@percent }
+\newlabel{subsubsec:cleaning_operations}{{3.1.2}{4}{Data Cleaning Operations}{subsubsection.3.1.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}Data Cleaning outcomes and Validation}{4}{subsubsection.3.1.3}\protected@file@percent }
+\newlabel{subsubsec:cleaning_validation}{{3.1.3}{4}{Data Cleaning outcomes and Validation}{subsubsection.3.1.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Summary of data cleaning operations, rationale, and retention rates.}}{4}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:data-cleaning}{{1}{4}{Summary of data cleaning operations, rationale, and retention rates}{table.caption.1}{}}
+\citation{1583581}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Data Visualization}{5}{subsection.3.2}\protected@file@percent }
+\newlabel{fig:resp_dist}{{1a}{5}{Response time distribution}{figure.caption.2}{}}
+\newlabel{sub@fig:resp_dist}{{a}{5}{Response time distribution}{figure.caption.2}{}}
+\newlabel{fig:hourly_calls}{{1b}{5}{Hourly hall call volume}{figure.caption.2}{}}
+\newlabel{sub@fig:hourly_calls}{{b}{5}{Hourly hall call volume}{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces System responsiveness and overall temporal demand pattern.}}{5}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:temporal_overview}{{1}{5}{System responsiveness and overall temporal demand pattern}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Empirical Findings from EDA}{5}{subsection.3.3}\protected@file@percent }
+\newlabel{subsec:eda}{{3.3}{5}{Empirical Findings from EDA}{subsection.3.3}{}}
+\newlabel{fig:up_down}{{2a}{6}{Up vs. down calls by hour}{figure.caption.3}{}}
+\newlabel{sub@fig:up_down}{{a}{6}{Up vs. down calls by hour}{figure.caption.3}{}}
+\newlabel{fig:usage_weight}{{2b}{6}{Average passenger weight entering per hour}{figure.caption.3}{}}
+\newlabel{sub@fig:usage_weight}{{b}{6}{Average passenger weight entering per hour}{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Directional traffic modes and load intensity validation.}}{6}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:directional_load}{{2}{6}{Directional traffic modes and load intensity validation}{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Weekday versus weekend call volume, showing structured office traffic on weekdays.}}{6}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:weekday_weekend}{{3}{6}{Weekday versus weekend call volume, showing structured office traffic on weekdays}{figure.caption.4}{}}
+\newlabel{fig:heatmap_weekday}{{4a}{6}{Weekday spatial-temporal heatmap}{figure.caption.5}{}}
+\newlabel{sub@fig:heatmap_weekday}{{a}{6}{Weekday spatial-temporal heatmap}{figure.caption.5}{}}
+\newlabel{fig:heatmap_weekend}{{4b}{6}{Weekend spatial-temporal heatmap}{figure.caption.5}{}}
+\newlabel{sub@fig:heatmap_weekend}{{b}{6}{Weekend spatial-temporal heatmap}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Spatial distribution of hall calls across floors and hours.}}{6}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:spatial_heatmaps}{{4}{6}{Spatial distribution of hall calls across floors and hours}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Feature Engineering}{7}{subsection.3.4}\protected@file@percent }
+\newlabel{subsec:features}{{3.4}{7}{Feature Engineering}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Synthesis of Findings}{7}{subsection.3.5}\protected@file@percent }
+\newlabel{subsec:findings}{{3.5}{7}{Synthesis of Findings}{subsection.3.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Modeling}{7}{section.4}\protected@file@percent }
+\newlabel{sec:modeling}{{4}{7}{Modeling}{section.4}{}}
+\newlabel{sec:modeling}{{4}{7}{Modeling}{section.4}{}}
+\citation{gbdt_chen,friedman2001gbm}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overview and Modeling Philosophy}{8}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Model 1: Short-Term Passenger Arrival Forecasting (Task 1)}{8}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Target and Time Discretization}{8}{subsubsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Feature Engineering}{8}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Model Choice and Validation Protocol}{8}{subsubsection.4.2.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Task 1 one-step forecasting benchmark (Route B).}}{8}{table.caption.6}\protected@file@percent }
+\newlabel{tab:task1-benchmark-routeb}{{2}{8}{Task 1 one-step forecasting benchmark (Route B)}{table.caption.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Task 1 forecasting performance (5-minute demand).}}{8}{table.caption.8}\protected@file@percent }
+\newlabel{tab:task1-metrics}{{3}{8}{Task 1 forecasting performance (5-minute demand)}{table.caption.8}{}}
+\citation{ZHAO201992}
+\citation{rousseeuw1987silhouette}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Observed vs.\ predicted 5-minute demand for a representative window.}}{9}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:task1-pred}{{5}{9}{Observed vs.\ predicted 5-minute demand for a representative window}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Output to Downstream Control}{9}{subsubsection.4.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Model 2: Traffic Mode Discovery and Online Classification (Task 2)}{9}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Mode Features with Operational Meaning}{9}{subsubsection.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Unsupervised Clustering and Interpretability}{9}{subsubsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Cluster-to-Mode Naming}{10}{subsubsection.4.3.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Cluster profiles (mean feature values) used for interpretable traffic-mode naming.}}{10}{table.caption.9}\protected@file@percent }
+\newlabel{tab:task2-cluster-profile}{{4}{10}{Cluster profiles (mean feature values) used for interpretable traffic-mode naming}{table.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Mode frequency by hour-of-day, highlighting daily regime shifts.}}{10}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:task2-heatmap}{{6}{10}{Mode frequency by hour-of-day, highlighting daily regime shifts}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.4}Online Mode Classification}{10}{subsubsection.4.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Model 3: Mode-Aware Dynamic Parking via Weighted $k$-Median (Task 3)}{10}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Mode-Conditioned Floor Demand Distribution}{10}{subsubsection.4.4.1}\protected@file@percent }
+\citation{hakimi1964median}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Optimization Formulation (Weighted 1D $k$-Median)}{11}{subsubsection.4.4.2}\protected@file@percent }
+\newlabel{eq:kmedian}{{4}{11}{Optimization Formulation (Weighted 1D $k$-Median)}{equation.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Solution and Assignment}{11}{subsubsection.4.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.4}Execution Policy}{11}{subsubsection.4.4.4}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Mode-Aware Dynamic Parking Policy}}{11}{algorithm.1}\protected@file@percent }
+\newlabel{alg:dynamic-parking}{{1}{11}{Mode-Aware Dynamic Parking Policy}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Interpretable Baseline and Fallback Policy (Route B)}{11}{subsection.4.5}\protected@file@percent }
+\newlabel{subsec:baseline-fallback}{{4.5}{11}{Interpretable Baseline and Fallback Policy (Route B)}{subsection.4.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.1}Task 1: time-of-day baseline + regime AR(1).}{11}{subsubsection.4.5.1}\protected@file@percent }
+\newlabel{subsubsec:routebtask1}{{4.5.1}{11}{Task 1: time-of-day baseline + regime AR(1)}{subsubsection.4.5.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.2}Task 2: Rule-based real-time traffic state classification Model.}{11}{subsubsection.4.5.2}\protected@file@percent }
+\newlabel{subsubsec:routebtask2}{{4.5.2}{11}{Task 2: Rule-based real-time traffic state classification Model}{subsubsection.4.5.2}{}}
+\citation{cibse2020guided,barney2015elevatortraffic}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.3}Task 3: zone-based state-aware parking rule.}{12}{subsubsection.4.5.3}\protected@file@percent }
+\newlabel{subsubsec:routebtask3}{{4.5.3}{12}{Task 3: zone-based state-aware parking rule}{subsubsection.4.5.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.4}Deployment Fallback: When to Switch from Route A to Route B}{12}{subsubsection.4.5.4}\protected@file@percent }
+\newlabel{subsubsec:switching}{{4.5.4}{12}{Deployment Fallback: When to Switch from Route A to Route B}{subsubsection.4.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Simulation-Based Evaluation (Baselines and Metrics)}{12}{subsection.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.1}Baselines}{12}{subsubsection.4.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.2}Metrics}{12}{subsubsection.4.6.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Simulation comparison of parking strategies.}}{13}{table.caption.11}\protected@file@percent }
+\newlabel{tab:task3-strategy}{{5}{13}{Simulation comparison of parking strategies}{table.caption.11}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.3}Discussion}{13}{subsubsection.4.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Robustness and Sensitivity (Brief)}{13}{subsection.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Result Analysis and Robustness Testing}{13}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{5}{13}{Result Analysis and Robustness Testing}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Performance Evaluation}{13}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Important note on units.}{13}{paragraph*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Simulator consistency and calibration.}{13}{paragraph*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Task 1 (Forecasting).}{13}{paragraph*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Task 2 (Mode discovery and online classification).}{13}{paragraph*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Task 3 (Mode-aware dynamic parking).}{14}{paragraph*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Interpretable baseline benchmark and deployment fallback.}{14}{paragraph*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Stress Tests and Robustness}{14}{subsection.5.2}\protected@file@percent }
+\newlabel{subsec:stress}{{5.2}{14}{Stress Tests and Robustness}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Robustness and Sensitivity}{14}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Memo to Management}{15}{section.6}\protected@file@percent }
+\newlabel{sec:memo}{{6}{15}{Memo to Management}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{15}{section.7}\protected@file@percent }
+\bibstyle{IEEEtran}
+\bibdata{myref}
+\bibcite{macqueen1967kmeans}{{1}{}{{}}{{}}}
+\bibcite{cibse2020guided}{{2}{}{{}}{{}}}
+\bibcite{strakosch2010vertical}{{3}{}{{}}{{}}}
+\bibcite{barney2015elevatortraffic}{{4}{}{{}}{{}}}
+\bibcite{1583581}{{5}{}{{}}{{}}}
+\bibcite{gbdt_chen}{{6}{}{{}}{{}}}
+\bibcite{friedman2001gbm}{{7}{}{{}}{{}}}
+\bibcite{ZHAO201992}{{8}{}{{}}{{}}}
+\bibcite{rousseeuw1987silhouette}{{9}{}{{}}{{}}}
+\bibcite{hakimi1964median}{{10}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix: Data, Algorithms, and Reproducibility}{16}{appendix.A}\protected@file@percent }
+\newlabel{app:all}{{A}{16}{Appendix: Data, Algorithms, and Reproducibility}{appendix.A}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}Appendix A. Data Dictionary and Preprocessing Details}{16}{subsection.A.1}\protected@file@percent }
+\newlabel{app:data}{{A.1}{16}{Appendix A. Data Dictionary and Preprocessing Details}{subsection.A.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Cleaned datasets and key fields used by our pipeline. (All files are saved under \texttt  {data\_cleaning/} in UTF-8.)}}{17}{table.caption.18}\protected@file@percent }
+\newlabel{tab:data-dict}{{6}{17}{Cleaned datasets and key fields used by our pipeline. (All files are saved under \texttt {data\_cleaning/} in UTF-8.)}{table.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}Appendix B. Feature Engineering (Task 1 \& Task 2)}{17}{subsection.A.2}\protected@file@percent }
+\newlabel{app:features}{{A.2}{17}{Appendix B. Feature Engineering (Task 1 \& Task 2)}{subsection.A.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}Appendix C. Mode Clustering Configuration and Naming}{17}{subsection.A.3}\protected@file@percent }
+\newlabel{app:clustering}{{A.3}{17}{Appendix C. Mode Clustering Configuration and Naming}{subsection.A.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}Appendix D. Weighted 1D $k$-Median Solution Sketch}{17}{subsection.A.4}\protected@file@percent }
+\newlabel{app:kmedian}{{A.4}{17}{Appendix D. Weighted 1D $k$-Median Solution Sketch}{subsection.A.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Appendix E. Simulation Assumptions and Parameters}{17}{subsection.A.5}\protected@file@percent }
+\newlabel{app:sim}{{A.5}{17}{Appendix E. Simulation Assumptions and Parameters}{subsection.A.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Appendix F. Additional Results (Stress Tests)}{17}{subsection.A.6}\protected@file@percent }
+\newlabel{app:extra}{{A.6}{17}{Appendix F. Additional Results (Stress Tests)}{subsection.A.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Simulation parameters used in our lightweight evaluator. We report results in simulation seconds and emphasize relative comparisons across strategies.}}{18}{table.caption.19}\protected@file@percent }
+\newlabel{tab:sim-params}{{7}{18}{Simulation parameters used in our lightweight evaluator. We report results in simulation seconds and emphasize relative comparisons across strategies}{table.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Stress-test results using tail-risk aware metrics (AWT, P95, and long-wait rate).}}{18}{table.caption.20}\protected@file@percent }
+\newlabel{tab:stress-tests}{{8}{18}{Stress-test results using tail-risk aware metrics (AWT, P95, and long-wait rate)}{table.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.7}Appendix G. Reproducibility Checklist}{18}{subsection.A.7}\protected@file@percent }
+\newlabel{app:repro}{{A.7}{18}{Appendix G. Reproducibility Checklist}{subsection.A.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.8}Appendix H. Interpretable Baseline and Fallback Policy (Route B)}{18}{subsection.A.8}\protected@file@percent }
+\newlabel{app:routeb}{{A.8}{18}{Appendix H. Interpretable Baseline and Fallback Policy (Route B)}{subsection.A.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{Task 1: baseline + regime AR(1) predictor.}{18}{paragraph*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Task 2: rule-based traffic state classifier with robust thresholds.}{18}{paragraph*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Task 3: zone-based parking allocation.}{19}{paragraph*.23}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Task 3 strategy comparison (overall).}}{19}{table.caption.24}\protected@file@percent }
+\newlabel{tab:task3-strategy}{{9}{19}{Task 3 strategy comparison (overall)}{table.caption.24}{}}
+\newlabel{task3-overall}{{9}{19}{Task 3 strategy comparison (overall)}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.9}Validation}{19}{subsection.A.9}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Task 1 per-state benchmark (top states by sample size).}}{19}{table.caption.25}\protected@file@percent }
+\newlabel{tab:task1-benchmark-by-state}{{10}{19}{Task 1 per-state benchmark (top states by sample size)}{table.caption.25}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Task 3 performance under operationally critical windows.}}{19}{table.caption.26}\protected@file@percent }
+\newlabel{tab:task3-windows}{{11}{19}{Task 3 performance under operationally critical windows}{table.caption.26}{}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\@writefile{toc}{\contentsline {paragraph}{Language and Writing Support}{}{paragraph*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Code Drafting Assistance}{}{paragraph*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Explicitly Excluded Uses of AI}{}{paragraph*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Verification and Responsibility}{}{paragraph*.31}\protected@file@percent }
+\gdef \@abspage@last{22}

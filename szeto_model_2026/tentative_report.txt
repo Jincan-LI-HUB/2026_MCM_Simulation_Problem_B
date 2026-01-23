@@ -1,0 +1,422 @@
+4.1 Model 1: Short -Term Passenger Flow Prediction (Task 1)  
+4.1.1 Purpose of the Model  
+In order to  support proactive elevator dispatching and parking decisions, it is necessary 
+to anticipate near -future passenger demand.  
+Based on the exploratory data analysis presented in Section 3, elevator hall -call arrivals 
+show two key characteristics:  
+1. Strong regularity within a day , with recurring peaks during lunchtime and 
+evening hours.  
+2. Short-term dependence , where demand in the next few minutes is closely 
+related to recent demand levels.  
+Motivated by these observations, we develop a mathematical model to predict the total 
+number of hall calls in the next 5 -minute time interval . The model is designed to be 
+simple, interpretable, and suitable for real -time implementation in an elevator group 
+control system.  
+4.1.2 Notation and Time Discretization  
+Time is divided into consecutive 5 -minute intervals. Let  
+𝑦𝑡=number of hall calls occurring during the 𝑡-th 5-minute interval . 
+ 
+The objective of Task 1 is to estimate the expected demand in the next interval:  
+𝑦̂𝑡+1=𝔼[𝑦𝑡+1∣ℱ𝑡], 
+ 
+where ℱ𝑡represents all information available up to time 𝑡. 
+To account for the significant behavioral differences observed between weekdays and 
+weekends, we introduce a regime indicator:  
+𝑤𝑡={1,if interval 𝑡 occurs on a weekday ,
+0,if interval 𝑡 occurs on a weekend . 
+4.1.3 Time -of-Day Baseline Demand  
+Exploratory analysis reveals that passenger arrivals follow a highly repeatable daily 
+pattern. To capture this regularity, we define a time-of-day baseline demand . 
+Let 𝜏(𝑡)denote the position of interval 𝑡within a day (e.g., the index of a 5 -minute 
+interval from midnight). For each regime 𝑤∈{0,1}, we define:  
+
+𝜇𝑤(𝜏)=𝔼[𝑦𝑡∣𝑤𝑡=𝑤, 𝜏(𝑡)=𝜏]. 
+ 
+This baseline represents the typical number of hall calls expected at a given time of day 
+under weekday or weekend conditions. In practice, 𝜇𝑤(𝜏)is estimated using historical 
+averages from the available data.  
+4.1.4 Short -Term Adjustment Using Recent Observations  
+While the baseline captures long -term regularity, actual demand may temporarily 
+deviate from typical levels due to local fluctuations. To account for this effect, we 
+introduce a deviation term:  
+𝑒𝑡=𝑦𝑡−𝜇𝑤𝑡(𝜏(𝑡)). 
+ 
+Empirical observations indicate that these deviations tend to persist over short time 
+horizons. Therefore, we model the deviation using a first -order autoregressive structure:  
+𝑒𝑡=𝜙𝑤𝑡 𝑒𝑡−1+𝜀𝑡, 
+ 
+where ∣𝜙𝑤𝑡∣<1and 𝜀𝑡represents short -term random variability with zero mean.  
+4.1.5 One -Step-Ahead Forecasting Formula  
+Combining the baseline demand with the short -term adjustment yields the following 
+prediction for the next interval:  
+𝑦̂𝑡+1=𝜇𝑤𝑡+1(𝜏(𝑡+1))+𝜙𝑤𝑡[𝑦𝑡−𝜇𝑤𝑡(𝜏(𝑡))] 
+ 
+This formulation reflects two intuitive components:  
+• the expected demand at the next time of day , and  
+• a correction term  based on whether recent demand has been higher or lower 
+than usual.  
+4.1.6 Parameter Estimation  
+The baseline demand 𝜇𝑤(𝜏)is estimated by averaging historical hall -call counts for the 
+corresponding regime and time -of-day interval.  
+The autoregressive parameter 𝜙𝑤is estimated separately for weekdays and weekends 
+using standard least -squares regression on the deviation series {𝑒𝑡}. This separation 
+
+ensures that the model reflects the distinct temporal dynamics observed under different 
+operating regimes.  
+4.1.7 Interpretation and Model Applicability  
+The proposed model captures both systematic daily patterns  and short-term 
+demand persistence , enabling reliable prediction of near -future passenger flow. Its 
+simplicity allows for efficient real -time computation, making it well suited for integration 
+into elevator group control systems.  
+The predicted value 𝑦̂𝑡+1serves as a key input for:  
+• traffic mode identification (Task 2), and  
+• proactive elevator parking decisions (Task 3).  
+4.1.8 Limitations  
+The model is designed to describe typical operating conditions and may not fully 
+capture rare, unexpected events such as large unscheduled gatherings. Nevertheless, its 
+transparency and robustness make it an appropriate foundation for short -term demand 
+forecasting in this application.  
+ 
+ 
+4.2 Model 2: Real -Time Traffic State Classification (Task 2)  
+4.2.1 Objective of the Model  
+Elevator traffic within a high -rise building is not uniform throughout the day. Instead, it 
+evolves through a small number of recurring operational modes, such as morning up -
+peak, lunchtime transitions, and evening down -peak.  
+Identifying the current traffic state in real time is essential, since different elevator 
+control and parking strategies are appropriate for different modes.  
+The objective of Task 2 is therefore to develop a real-time classification model  that 
+automatically assigns the building to a traffic state based on observable elevator call 
+characteristics. The resulting state label serves as a decision signal for the dynamic 
+parking strategy developed in Task 3.  
+4.2.2 Definition of Traffic States  
+Based on exploratory data analysis and common elevator traffic theory, we define the 
+following set of discrete traffic states:  
+
+𝒮
+={Night Idle ,Morning Up -Peak,Lunch Down -Peak,Afternoon Mixed ,Evening Down -Peak,Weekend Low -Demand}. 
+ 
+Each state corresponds to a distinct pattern of passenger behavior and directional flow, 
+and therefore requires different operational responses.  
+4.2.3 Real -Time Feature Construction  
+To classify the current traffic state, we extract a set of features from the most recent 5 -
+minute observation window, consistent with the forecasting horizon in Task 1.  
+Let the following quantities be defined for time interval 𝑡: 
+• 𝐶𝑡: total number of hall calls,  
+• 𝐶𝑡𝑢𝑝: number of upward hall calls,  
+• 𝐶𝑡𝑑𝑜𝑤𝑛: number of downward hall calls,  
+• 𝑟𝑡=𝐶𝑡𝑢𝑝
+𝐶𝑡: proportion of upward calls,  
+• 𝑝1,𝑡: proportion of hall calls originating from Floor 1,  
+• 𝐻𝑡: spatial entropy of call distribution across floors, measuring how 
+concentrated or dispersed the demand is.  
+These features are combined into a feature vector:  
+𝐱𝑡=(𝐶𝑡, 𝑟𝑡, 𝑝1,𝑡, 𝐻𝑡). 
+ 
+All quantities are directly observable in real time and require no historical model 
+training.  
+4.2.4 Rule -Based State Classification Model  
+Rather than relying on data -driven black -box classifiers, we adopt a rule-based 
+classification approach . This ensures transparency, interpretability, and robustness, all 
+of which are desirable in operational elevator control systems.  
+The traffic state at time 𝑡, denoted 𝑠𝑡, is determined by the following decision rules:  
+
+𝑠𝑡=
+{    Night Idle , 𝐶𝑡<𝜃1,
+Morning Up -Peak,𝐶𝑡≥𝜃2, 𝑟𝑡≥𝛼1, 𝑝1,𝑡≥𝛽1,
+Evening Down -Peak, 𝐶𝑡≥𝜃3, 𝑟𝑡≤𝛼2,
+Lunch Down -Peak,𝐶𝑡≥𝜃2, 𝛼2<𝑟𝑡<𝛼3,
+Weekend Low -Demand, 𝑤𝑡=0,
+Afternoon Mixed , otherwise . 
+ 
+Here:  
+• 𝜃1,𝜃2,𝜃3are demand intensity thresholds,  
+• 𝛼1,𝛼2,𝛼3define directional dominance,  
+• 𝛽1captures the concentration of lobby -originated traffic.  
+Threshold values are determined empirically using historical quantiles of the 
+corresponding features, ensuring adaptability to different building scales and usage 
+levels.  
+4.2.5 Interpretation of Classification Logic  
+Each classification rule reflects an intuitive interpretation of observed traffic behavior:  
+• Night Idle  corresponds to minimal system activity, typically during late -night 
+hours.  
+• Morning Up -Peak is characterized by high demand, strong upward 
+directionality, and heavy concentration at the lobby.  
+• Lunch Down -Peak reflects a temporary downward migration of occupants, 
+often involving multiple floors.  
+• Evening Down -Peak exhibits the strongest downward dominance as occupants 
+exit the building.  
+• Afternoon Mixed  represents intermediate periods with balanced inter -floor 
+movement.  
+• Weekend Low -Demand  captures the fundamentally different usage patterns 
+observed on weekends.  
+This structure allows the system to respond not only to demand magnitude, but also to 
+demand direction and spatial distribution.  
+4.2.6 Role in the Integrated Framework  
+The output of Model 2 is a discrete traffic state label 𝑠𝑡∈𝒮, updated every 5 minutes.  
+
+This label is used in Task 3 to select appropriate elevator parking and repositioning 
+strategies, enabling a state -aware and demand -responsive control policy.  
+4.2.7 Advantages and Limitations  
+Advantages  
+• Fully interpretable and transparent decision logic,  
+• No training data or computational overhead required,  
+• Easily adaptable to other buildings by recalibrating thresholds.  
+Limitations  
+• The rule-based structure may not capture rare or atypical traffic patterns,  
+• Threshold selection depends on historical data quality.  
+Despite these limitations, the model provides a reliable and operationally meaningful 
+representation of real -time elevator traffic states.  
+ 
+ 
+4.3 Model 3: Dynamic Elevator Parking Strategy (Task 3)  
+4.3.1 Objective of the Parking Strategy  
+When an elevator becomes idle, its parking location has a significant impact on future 
+passenger waiting times and system efficiency. A poorly chosen parking strategy may 
+lead to long response times, unnecessary empty travel, and uneven elevator utilizatio n. 
+The objective of Task 3 is to develop a dynamic elevator parking strategy  that 
+determines:  
+1. where idle elevators should be parked,  
+2. how many elevators should be positioned at key locations, and  
+3. when repositioning should occur,  
+based on predicted near -future demand (Task 1) and the current traffic state (Task 2).  
+4.3.2 Decision Framework and Inputs  
+The parking strategy operates in discrete 5 -minute decision intervals, consistent with 
+the time scale used in Tasks 1 and 2.  
+
+At time interval 𝑡, the decision framework takes the following inputs:  
+• 𝑦̂𝑡+1: predicted total hall -call demand in the next 5 -minute interval (Task 1),  
+• 𝑠𝑡∈𝒮: current traffic state identified by the classification model (Task 2),  
+• {𝑓𝑘}: current floor locations of all idle elevators.  
+The output of the model is a set of parking assignments for idle elevators.  
+4.3.3 Candidate Parking Floors  
+Rather than allowing elevators to park arbitrarily at any floor, we define a limited set of 
+candidate parking floors  based on spatial demand patterns observed in the 
+exploratory data analysis:  
+ℒ={Lobby, Mid-Zone, Upper-Zone}. 
+ 
+These zones represent:  
+• Lobby: the primary origin point during up -peak periods,  
+• Mid-Zone: floors with consistently high daytime activity,  
+• Upper-Zone: floors associated with concentrated downward demand during 
+evening periods.  
+Restricting parking locations to a small number of zones simplifies decision -making and 
+enhances operational robustness.  
+4.3.4 Conceptual Objective Function  
+The parking strategy is designed to optimize overall system performance. Conceptually, 
+we consider the following multi -objective function:  
+min⁡𝐽=𝛼⋅AWT+𝛽⋅𝑃(Wait>𝜏)+𝛾⋅Empty Travel , 
+ 
+where:  
+• AWT denotes average passenger waiting time,  
+• 𝑃(Wait>𝜏)represents the proportion of long -wait incidents exceeding a 
+threshold 𝜏, 
+• Empty Travel  measures unnecessary elevator movement without passengers,  
+• 𝛼,𝛽,𝛾are non-negative weighting parameters.  
+
+This objective guides the structure of the parking rules but does not require explicit 
+numerical optimization.  
+4.3.5 State -Dependent Parking Policy  
+We propose a state-dependent rule -based parking policy , where parking decisions 
+are determined primarily by the identified traffic state 𝑠𝑡. 
+(1) Night Idle State  
+When 𝑠𝑡=Night Idle , overall demand is minimal.  
+Policy: 
+• Maintain a small number of elevators at the lobby,  
+• Park remaining idle elevators at their most recent stop floors to minimize 
+unnecessary movement.  
+(2) Morning Up -Peak State  
+During morning up -peak periods, most passenger requests originate from the lobby 
+and travel upward.  
+Policy: 
+• Allocate the majority of idle elevators to the lobby,  
+• Minimize repositioning to upper zones unless demand predictions indicate 
+unusually high activity.  
+(3) Lunch Down -Peak State  
+Lunchtime traffic involves significant downward movement from multiple occupied 
+floors.  
+Policy: 
+• Distribute idle elevators across the mid -zone,  
+• Reduce reliance on lobby parking to avoid delayed responses to upper -floor 
+calls. 
+(4) Afternoon Mixed State  
+In the afternoon, traffic is characterized by balanced inter -floor movement.  
+Policy: 
+• Evenly distribute idle elevators among lobby, mid -zone, and upper -zone,  
+
+• Aim to minimize the maximum distance between any idle elevator and potential 
+call locations.  
+(5) Evening Down -Peak State  
+Evening traffic exhibits strong downward dominance, often originating from upper 
+floors.  
+Policy: 
+• Pre-position a larger share of idle elevators in the upper -zone,  
+• Maintain limited lobby presence to handle residual arrivals.  
+(6) Weekend Low -Demand State  
+Weekend traffic is sparse and less structured.  
+Policy: 
+• Keep a minimal number of elevators active at the lobby,  
+• Park remaining elevators at nearby floors and prioritize energy -saving behavior.  
+4.3.6 Role of Demand Prediction in Repositioning Timing  
+The predicted demand 𝑦̂𝑡+1is used as a trigger for proactive repositioning.  
+If 𝑦̂𝑡+1exceeds a predefined demand threshold, idle elevators may be repositioned 
+before new calls are registered. This anticipatory behavior reduces response delays 
+during emerging peak periods and prevents reactive congestion.  
+4.3.7 Discussion of Strategy Characteristics  
+The proposed parking strategy exhibits several desirable properties:  
+• Interpretability : all decisions are based on transparent rules linked to 
+observable traffic states,  
+• Adaptability : the strategy automatically adjusts as the traffic state changes 
+throughout the day,  
+• Efficiency : unnecessary elevator movement is avoided during low -demand 
+periods,  
+• Practicality : the policy can be implemented as a software -level enhancement to 
+existing group control systems.  
+4.3.8 Limitations  
+
+The strategy is designed for typical daily operating patterns and may not fully address 
+rare, unexpected events. In such cases, manual overrides or adaptive threshold 
+adjustments may be required. Nevertheless, for routine operations, the proposed policy 
+provides a robust and effective approach to elevator parking management.  
+ 
+ 
+Summary Sheet  
+Problem B: The Elevator Pitch  
+Background and Problem Statement  
+In modern high -rise buildings, elevator efficiency strongly affects passenger experience, 
+energy consumption, and system wear. A critical but often overlooked component of 
+elevator group control is the parking strategy —deciding where idle elevators should 
+wait for future calls. Static strategies, such as leaving elevators at their last stop or 
+sending all idle cars to the lobby, fail to adapt to time -varying traffic patterns and may 
+result in long waiting times and unne cessary empty travel.  
+Using 30 days of operational data from a bank of eight elevators in a mixed -use 
+building, this study develops a set of mathematical models to support predictive, 
+state-aware, and dynamic elevator parking decisions . 
+Task 1: Short -Term Passenger Flow Prediction  
+To anticipate near -future demand, we model the total number of hall calls in the next 
+5-minute interval. Exploratory data analysis reveals strong time-of-day regularity , 
+clear weekday –weekend differences , and short-term temporal dependence . 
+We propose a regime -based time -series model that decomposes demand into:  
+1. a time-of-day baseline , representing typical passenger behavior at each 
+moment of the day, and  
+2. a short-term adjustment , capturing recent deviations from typical levels.  
+The resulting model predicts future demand using both historical daily patterns and 
+recent observations. The forecasted passenger flow serves as an early indicator of 
+emerging congestion and provides input for subsequent traffic classification and 
+parking decisions.  
+Task 2: Real -Time Traffic State Classification  
+Elevator traffic does not evolve continuously but instead switches among a small 
+
+number of recurring operational modes. Based on data analysis and elevator traffic 
+theory, we define discrete traffic states including Morning Up -Peak, Lunch Down -
+Peak, Afternoon Mixed , Evening Down -Peak, Night Idle , and Weekend Low -
+Demand . 
+A rule-based classification model is developed using real -time features such as:  
+• total hall call volume,  
+• proportion of upward calls,  
+• concentration of lobby -originated requests, and  
+• spatial distribution of calls across floors.  
+Transparent decision rules map these features to traffic states without requiring model 
+training. This approach ensures interpretability and enables reliable real -time 
+identification of the building’s current operating mode.  
+Task 3: Dynamic Elevator Parking Strategy  
+Using the predicted demand (Task 1) and identified traffic state (Task 2), we design a 
+state-dependent dynamic parking strategy  for idle elevators. Candidate parking 
+locations are grouped into functional zones, including the lobby, mid -level floors, and 
+upper-level floors.  
+For each traffic state, tailored parking rules determine:  
+• where idle elevators should be positioned,  
+• how many elevators should be allocated to each zone, and  
+• when proactive repositioning should occur.  
+The strategy is guided by a conceptual objective that balances average waiting time, 
+long-wait occurrences, and unnecessary empty travel. By pre -positioning elevators near 
+expected demand sources, the proposed policy improves responsiveness during peak 
+periods while conserving energy during low -demand intervals.  
+Conclusions  
+Together, the three models form an integrated framework that links prediction , 
+classification , and decision-making. The proposed approach replaces static parking 
+rules with a flexible, data -informed strategy that adapts to changing traffic conditions 
+throughout the day. This framework enhances passenger experience, improves system 
+efficiency, and provides a practical foundation for smarter elevator group control 
+systems.  
+
+Memo to Building Management and Elevator Maintenance Company  
+Subject: Proposal for a Dynamic Elevator Parking Strategy Based on Building Traffic 
+Patterns  
+To: Building Management Team and Elevator Maintenance Company  
+From: MCM Modeling Team  
+Date: [Insert Date]  
+Executive Summary  
+This memo proposes a dynamic elevator parking strategy  designed to reduce 
+passenger waiting times, decrease unnecessary elevator movement, and improve 
+overall system efficiency.  
+Unlike traditional static approaches —such as leaving elevators at their last stop or 
+returning all idle elevators to the lobby —our strategy adapts in real time to changing 
+traffic conditions within the building.  
+Using historical operational data and observed traffic patterns, we recommend a state -
+aware parking policy that positions idle elevators closer to where future demand is most 
+likely to occur.  
+Why Current Parking Strategies Are Inefficient  
+Conventional parking strategies are simple but inflexible:  
+• Leaving elevators at their last stop  often places idle cars far from the next 
+passenger request.  
+• Sending all idle elevators to the lobby  increases empty travel, energy 
+consumption, and congestion during non –up-peak periods.  
+Our analysis shows that elevator demand varies significantly throughout the day. Traffic 
+patterns during morning arrivals, lunchtime movement, afternoon activity, and evening 
+departures are fundamentally different. A single static parking rule cannot perfo rm well 
+across all these scenarios.  
+Overview of the Proposed Strategy  
+The proposed approach integrates three key components:  
+1. Short-term demand anticipation  
+Near-future passenger demand is estimated using recent activity and time -of-
+day patterns.  
+2. Traffic state identification  
+
+The building’s current operating mode (e.g., morning up -peak, evening down -
+peak, low -demand periods) is identified using simple, transparent rules based 
+on real-time data.  
+3. State-dependent parking decisions  
+When an elevator becomes idle, its parking location is determined by the 
+current traffic state rather than a fixed default rule.  
+This allows the system to respond proactively rather than reactively.  
+How the Strategy Works in Practice  
+• Morning Up -Peak:  
+Most idle elevators are positioned at the lobby to quickly serve incoming 
+passengers.  
+• Lunchtime and Afternoon Periods:  
+Elevators are distributed across mid -level floors where inter -floor movement is 
+most common.  
+• Evening Down -Peak:  
+More elevators are pre -positioned at upper floors to reduce response time for 
+departing occupants.  
+• Nighttime and Weekends:  
+Only a minimal number of elevators remain active at the lobby, while others 
+remain parked to minimize energy use and wear.  
+This adaptive behavior ensures that elevators are closer to anticipated demand, 
+reducing response delays.  
+Expected Benefits  
+Implementing this dynamic parking strategy is expected to deliver several benefits:  
+• Reduced passenger waiting times , particularly during peak periods.  
+• Fewer long -wait incidents , improving occupant satisfaction.  
+• Lower energy consumption , by minimizing unnecessary empty travel.  
+• More balanced elevator usage , reducing uneven wear and maintenance 
+burden.  
+Importantly, the strategy relies on rule -based logic and does not require complex 
+optimization algorithms, making it practical to integrate into existing group control 
+systems.  
+
+Implementation Considerations  
+• The strategy can be implemented as a software -level enhancement  without 
+changes to elevator hardware.  
+• Decision rules and thresholds can be adjusted to reflect building -specific 
+characteristics.  
+• The approach is transparent and interpretable, allowing operators to understand 
+and fine-tune system behavior.  
+Conclusion  
+By replacing static parking rules with a dynamic, traffic -aware strategy, the building can 
+significantly improve elevator performance and operational efficiency.  
+The proposed solution aligns with real -world usage patterns, is easy to implement, and 
+provides a scalable foundation for smarter elevator management.  
+We recommend pilot testing this strategy during selected operating hours to evaluate 
+its performance and refine parameters before full deployment.  

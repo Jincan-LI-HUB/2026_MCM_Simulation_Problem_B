@@ -1,0 +1,29 @@
+\begin{table}[H]
+\centering
+\caption{Task 3 performance under operationally critical windows.}
+\label{tab:task3-windows}
+\begin{tabular}{lrrrrrr}
+\hline
+Strategy & AWT & P95 & P99 & Long wait (\%) & Empty travel & $N$ \\
+\hline
+\multicolumn{7}{l}{\textbf{Peak (weekday 08-10,17-19) (long-wait threshold: 27.50 )}} \\
+dynamic & 8.44 & 9.50 & 14.00 & 0.00 & 0.02 & 49805 \\
+zone & 9.63 & 14.00 & 14.00 & 0.00 & 0.03 & 49805 \\
+last\_stop & 15.38 & 27.50 & 27.50 & 5.85 & 0.00 & 49805 \\
+lobby & 15.38 & 27.50 & 27.50 & 5.85 & 0.00 & 49805 \\
+\hline
+\multicolumn{7}{l}{\textbf{Transition (±15min around label changes) (long-wait threshold: 21.50 )}} \\
+dynamic & 8.32 & 9.50 & 12.50 & 0.00 & 0.05 & 106840 \\
+zone & 9.35 & 11.00 & 14.00 & 0.00 & 0.06 & 106840 \\
+last\_stop & 14.64 & 21.50 & 27.50 & 10.97 & 0.00 & 106840 \\
+lobby & 14.64 & 21.50 & 27.50 & 10.97 & 0.00 & 106840 \\
+\hline
+\multicolumn{7}{l}{\textbf{High-load (top 10\% 5-min bins) (long-wait threshold: 27.50 )}} \\
+dynamic & 8.35 & 9.50 & 14.00 & 0.00 & 0.00 & 83191 \\
+zone & 9.74 & 14.00 & 14.00 & 0.00 & 0.00 & 83191 \\
+last\_stop & 15.85 & 27.50 & 27.50 & 5.10 & 0.00 & 83191 \\
+lobby & 15.85 & 27.50 & 27.50 & 5.10 & 0.00 & 83191 \\
+\hline
+
+\end{tabular}
+\end{table}

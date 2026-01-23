@@ -1,0 +1,20 @@
+\begin{table}[H]\centering
+\caption{Stress-test results using tail-risk aware metrics (AWT, P95, and long-wait rate).}
+\label{tab:stress-tests}
+\begin{tabular}{llrrr}
+\toprule
+Scenario & Strategy & AWT & P95 & Long wait (\%) \\
+\midrule
+base & dynamic & 1.68 & 7.50 & 0.00 \\
+base & last\_stop & 1.70 & 7.50 & 0.00 \\
+params\_plus20 & dynamic & 3.16 & 13.80 & 0.00 \\
+params\_plus20 & last\_stop & 3.11 & 13.40 & 0.00 \\
+scale\_1p2 & dynamic & 2.65 & 12.00 & 0.00 \\
+scale\_1p2 & last\_stop & 2.67 & 12.00 & 0.00 \\
+scale\_1p5 & dynamic & 21.84 & 144.50 & 13.17 \\
+scale\_1p5 & last\_stop & 23.39 & 153.50 & 13.81 \\
+shock\_burst & dynamic & 1.68 & 7.50 & 0.00 \\
+shock\_burst & last\_stop & 1.68 & 7.50 & 0.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
